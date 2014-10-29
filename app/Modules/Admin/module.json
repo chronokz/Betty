@@ -1,0 +1,14 @@
+{
+    "name": "Admin",
+    "alias": "admin",
+    "description": "Admin Modules",
+    "keywords": [
+    	"admin",
+    	"modules",
+    	"pingpong"
+    ],
+    "require": {
+        "gravitano/helpers": "*"
+	},
+    "active": 1
+}
