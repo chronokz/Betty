@@ -46,7 +46,7 @@ $env = $app->detectEnvironment(function() {
 	*/
 
 	// File check - Advanced for web and for cli
-	if (file_exists('../env.local.php') || file_exists('env.local.php'))
+	if (file_exists('../.env.local.php') || file_exists('.env.local.php'))
 	{
 		return 'local';
 	}
