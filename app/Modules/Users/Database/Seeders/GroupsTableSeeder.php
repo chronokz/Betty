@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Users\Database\Models\Group;
 
-class UsersDatabaseSeeder extends Seeder {
+class GroupsTableSeeder extends Seeder {
 
 	/**
 	 * Run the database seeds.
@@ -12,9 +13,9 @@ class UsersDatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		Model::unguard();
-		
-		$this->call(__NAMESPACE__ ."\\GroupsTableSeeder");
+		Group::create([
+			'name'		=>	'Administrator'
+		]);
 	}
 
 }
