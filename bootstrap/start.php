@@ -32,8 +32,10 @@ $env = $app->detectEnvironment(array(
 */
 
 
-
 $env = $app->detectEnvironment(function() {
+
+	// Domain check - Basic for web (deprecated)
+	/*	
 	$local_env = array('', 'dev', 'local');
 	$domain = substr(strrchr($_SERVER['HTTP_HOST'], '.'), 1);
 	
@@ -41,6 +43,14 @@ $env = $app->detectEnvironment(function() {
 	{
 		return 'local';
 	}
+	*/
+
+	// File check - Advanced for web and for cli
+	if (file_exists('../env.local.php'))
+	{
+		return 'local';
+	}
+
 });
 
 /*
