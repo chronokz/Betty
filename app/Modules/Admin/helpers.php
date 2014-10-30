@@ -12,12 +12,24 @@ function admin_redirect($route = null)
 	return app('redirect');
 }
 
-function admin_style($url, array $attributes = [], $secure = false)
+
+
+function admin_img($url, $alt = '', array $attributes = [])
+{
+	return HTML::Image(admin_asset($url), $alt, $attributes);
+}
+
+function admin_asset($url)
+{
+	return Module::asset('admin', $url);
+}
+
+function admin_css($url, array $attributes = [], $secure = false)
 {
     return Module::style('admin', $url, $attributes, $secure);
 }
 
-function admin_script($url, array $attributes = [], $secure = false)
+function admin_js($url, array $attributes = [], $secure = false)
 {
     return Module::script('admin', $url, $attributes, $secure);
 }

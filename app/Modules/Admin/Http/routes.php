@@ -14,3 +14,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
         Route::get('/', ['as' => 'admin.home', 'uses' => 'HomeController@index']);
     });
 });
+
+
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Modules\Admin\Http\Controllers\Pages',
+    'before' => 'admin.auth'
+    ], function ()
+{
+    Route::controller('pages', 'PageController');
+});

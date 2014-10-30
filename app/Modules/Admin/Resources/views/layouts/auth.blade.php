@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>@yield('title', 'Administrator')</title>
-	{{ admin_style('components/bootstrap/css/bootstrap.min.css') }}
+	{{ admin_css('components/bootstrap/css/bootstrap.min.css') }}
 </head>
 <body>
 
@@ -10,7 +10,7 @@
 		@yield('content')
 	</div>
 
-    {{ admin_script('js/jquery.min.js') }}
-    {{ admin_script('components/bootstrap/js/bootstrap.min.js') }}
+    {{ admin_js('js/jquery.min.js') }}
+    {{ admin_js('components/bootstrap/js/bootstrap.min.js') }}
 </body>
 </html>

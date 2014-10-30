@@ -11,13 +11,7 @@
 |
 */
 
-/*Route::get('/', function()
+Route::get('/', function()
 {
 	return View::make('hello');
-});*/
-
-// Route::get('login', ['as' => 'login', 'uses' => 'Admin\LoginController@getLogin']);
-// Route::get('login', ['as' => 'login', 'uses' => 'App\Modules\PageController@getIndex']);
-
-// Route::get('pages', ['as' => 'login', 'uses' => '\App\Modules\Page\Controllers\PageController@getIndex']);
-// Route::get('pages', ['as' => 'login', 'uses' => 'BlogController@getIndex']);
+});
