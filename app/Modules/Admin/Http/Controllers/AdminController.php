@@ -4,6 +4,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Input;
 
 class AdminController extends Controller {
 
@@ -37,25 +38,43 @@ class AdminController extends Controller {
 		$data['form_title'] = trans('admin.form_title');
 		$data['save_url'] = URL::route('admin.'.$this->module.'.store');
 		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
+		$data['method'] = 'POST';
 
 		return admin_view('admin.form.form', $data);
 	}
 
 	public function edit($id)
 	{
-		var_dump($id);
-		var_dump('edit');
+		$config = Config::get('admin::'.$this->module);
+		$data['form'] = $config['form'];
+		$data['item'] = $config['model']->find($id);
+		$data['title'] = trans($config['title']);
+		$data['sub_title'] = trans('admin.creating');
+		$data['form_title'] = trans('admin.form_title');
+		$data['save_url'] = URL::route('admin.'.$this->module.'.update', $id);
+		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
+		$data['method'] = 'PUT';
+
+		return admin_view('admin.form.form', $data);
 	}
 
 	public function store()
 	{
-		var_dump('store');
+		$config = Config::get('admin::'.$this->module);
+		$item = $config['model'];
+		$item->create(Input::get());
+
+		return Redirect::route('admin.'.$this->module.'.index');
 	}
 
 	public function update($id)
 	{
-		var_dump($id);
-		var_dump('update');
+		$config = Config::get('admin::'.$this->module);
+		$item = $config['model']->find($id);
+		$item->update(Input::get());
+
+		return Redirect::route('admin.'.$this->module.'.index');
+
 	}
 
 	public function destroy($id)

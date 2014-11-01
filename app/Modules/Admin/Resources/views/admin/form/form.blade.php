@@ -14,13 +14,13 @@
                    <h3>{{ $form_title }}</h3>
                 </div>
                 <div class="box-body">
-					<form role="form" class="form-horizontal" method="post">
+					{{ Form::open(array('url' => $save_url, 'class' => 'form-horizontal', 'method' => $method)) }}
 						
 						@foreach ($form as $name => $input)
 							@include('admin::admin.form_input.'.$input['type'])
 						@endforeach
 											
-					</form>
+					{{ Form::close() }}
 				</div>
 			</div>
 		</div><!-- ./col -->

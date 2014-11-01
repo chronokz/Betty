@@ -51,9 +51,7 @@ return [
 		'buttons' => [
 			'type' => 'buttons',
 			'buttons' => [
-				'show',
 				'edit',
-				'delete'
 			]
 		]
 
