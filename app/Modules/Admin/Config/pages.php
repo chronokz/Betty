@@ -5,6 +5,7 @@ return [
 	'title' => 'admin::modules.pages.title',
 	'model' => new Modules\Pages\Database\Models\Page,
 
+	// For Add and Edit
 	'form' => [
 		'title' => [
 			'label' => 'Заголовок',
@@ -34,4 +35,27 @@ return [
 			'type' => 'submit'
 		]
 	],
+
+	// For listing
+	'list' => [
+		'title' => [
+			'label' => 'Заголовок',
+		],
+		'alias' => [
+			'label' => 'Алиас',
+		],
+		'public' => [
+			'label' => 'Опубликовано',
+			'type' => 'yes_no',
+		],
+		'buttons' => [
+			'type' => 'buttons',
+			'buttons' => [
+				'show',
+				'edit',
+				'delete'
+			]
+		]
+
+	]
 ];

@@ -16,8 +16,15 @@ class AdminController extends Controller {
 
 	public function index()
 	{
-		var_dump('index');
-		return admin_view('index');
+		$config = Config::get('admin::'.$this->module);
+		$data['module'] = $this->module;
+		$data['list'] = $config['list'];
+		$data['items'] = $config['model']->all();
+		$data['title'] = trans($config['title']);
+		$data['sub_title'] = trans('admin.listing');
+		$data['list_title'] = trans('admin.list_title');
+
+		return admin_view('admin.list.list', $data);
 	}
 
 	public function create()
