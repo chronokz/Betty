@@ -186,18 +186,7 @@
 						 </div>
 					</div>
 					<div class="rightside">
-						<div class="page-head">
-							<h1>Basic Tables  <small>small text goes here</small></h1>
-							<ol class="breadcrumb">
-								<li>You are here:</li>
-								<li>Tables</li>
-								<li class="active">Basic Tables</li>
-							</ol>
-						</div>
-
-						<div class="content">
-							@yield('content')
-						</div>
+						@yield('content')
 					</div>
 				</div><!-- /.wrapper -->
 
