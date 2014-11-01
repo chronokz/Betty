@@ -25,6 +25,7 @@ Config::addNamespace('admin', __DIR__ . '/Config/');
 |
 */
 
+require __DIR__ . '/Http/filters.php';
 require __DIR__ . '/Http/routes.php';
 
 require __DIR__ . '/helpers.php';
