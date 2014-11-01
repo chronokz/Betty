@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="page-head">
-	<button class="btn btn-labeled btn-primary pull-right">
-	<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>Create</button>
+	<a href="{{ URL::route('admin.pages.create') }}" class="btn btn-labeled btn-primary pull-right">
+	<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>Create</a>
 	<h1>Basic Tables  <small>small text goes here</small></h1>
 </div>
 <div class="content">

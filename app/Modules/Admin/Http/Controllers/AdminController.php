@@ -2,8 +2,12 @@
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 
 class AdminController extends Controller {
+
+	public $module = 'home';
 
 	public function home()
 	{
@@ -18,7 +22,16 @@ class AdminController extends Controller {
 
 	public function create()
 	{
-		var_dump('create');
+		$config = Config::get('admin::'.$this->module);
+		$data['form'] = $config['form'];
+		$data['item'] = $config['model'];
+		$data['title'] = trans($config['title']);
+		$data['sub_title'] = trans('admin.creating');
+		$data['form_title'] = trans('admin.form_title');
+		$data['save_url'] = URL::route('admin.'.$this->module.'.store');
+		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
+
+		return admin_view('admin.form.form', $data);
 	}
 
 	public function edit($id)

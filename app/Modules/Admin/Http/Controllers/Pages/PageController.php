@@ -5,10 +5,11 @@ use Modules\Pages\Database\Models\Page;
 
 class PageController extends AdminController {
 
+	public $module = 'pages';
+
     public function index()
     {
     	$items = Page::all();
-        return admin_view('pages.index', compact('items'));
+        return admin_view('pages.list', compact('items'));
     }
-
 }

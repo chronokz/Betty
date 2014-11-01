@@ -30,16 +30,6 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<div class="navbar-header">
-					<form role="search" class="navbar-form" method="post" action="#">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search..."/>
-							<span class="input-group-btn">
-								<button type="submit" id="search-btn" class="btn"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</form>
-				</div>
 				<div class="navbar-right">
 					<ul class="nav navbar-nav">
 						<li class="dropdown dropdown-notifications">
