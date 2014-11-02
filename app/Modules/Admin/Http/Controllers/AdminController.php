@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller {
 
@@ -79,8 +80,13 @@ class AdminController extends Controller {
 
 	public function destroy($id)
 	{
-		var_dump($id);
-		var_dump('destroy');
+		$config = Config::get('admin::'.$this->module);
+		$item = $config['model']->find($id);
+		$item->delete();
+
+		Session::flash('message', trans( 'admin.deleted', ['id' => $id] ));
+
+		return Redirect::back();
 	}
 
 }

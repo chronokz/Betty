@@ -176,6 +176,10 @@
 						 </div>
 					</div>
 					<div class="rightside">
+						@if (Session::has('message'))
+							<div class="alert alert-success">{{ Session::get('message') }}</div>
+						@endif
+
 						@yield('content')
 					</div>
 				</div><!-- /.wrapper -->
@@ -194,5 +198,6 @@
 		
 		<!-- Forms -->
 		{{ admin_js('js/custom.js') }}
+		{{ admin_js('js/admin.js') }}
 	</body>
 </html>

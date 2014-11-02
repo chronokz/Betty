@@ -13,9 +13,11 @@
 	@endif 
 
 	@if ($button == 'delete')
-		<a class="btn btn-danger btn-sm" href="{{ URL::route('admin.'.$module.'.destroy', $item->id) }}">
-			<i class="fa fa-trash-o "></i> 
-		</a>
+		{{ Form::open(array('url' => URL::route('admin.'.$module.'.destroy', $item->id), 'class' => 'delete-destroy', 'method' => 'DELETE')) }}
+			<a class="btn btn-danger btn-sm submit">
+				<i class="fa fa-trash-o "></i> 
+			</a>
+		{{ Form::close() }}
 	@endif 
 
 @endforeach

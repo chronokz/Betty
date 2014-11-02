@@ -3,3 +3,7 @@
 	overflow: hidden;
 	height: 50px;
 }
+
+.delete-destroy{
+	display: inline-block;
+}
