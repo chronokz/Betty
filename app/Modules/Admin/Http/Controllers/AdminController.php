@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller {
 
@@ -62,18 +63,56 @@ class AdminController extends Controller {
 	public function store()
 	{
 		$config = Config::get('admin::'.$this->module);
+
+		// Validating
+		$rules = [];
+		foreach ($config['form'] as $field => $option) {
+			if (isset($option['valid']))
+			{
+				$rules[$field] = $option['valid'];
+			}
+		}
+		$validator = Validator::make(Input::get(), $rules);
+
+		if ($validator->fails())
+		{
+			Session::flash('message.error', $validator->messages());
+			return Redirect::back();
+		}
+
+		// Creating
 		$item = $config['model'];
 		$item->create(Input::get());
 
+		Session::flash('message.success', trans( 'admin.added', ['id' => $id] ));
 		return Redirect::route('admin.'.$this->module.'.index');
 	}
 
 	public function update($id)
 	{
 		$config = Config::get('admin::'.$this->module);
+
+		// Validating
+		$rules = [];
+		foreach ($config['form'] as $field => $option) {
+			if (isset($option['valid']))
+			{
+				$rules[$field] = $option['valid'];
+			}
+		}
+		$validator = Validator::make(Input::get(), $rules);
+
+		if ($validator->fails())
+		{
+			Session::flash('message.error', $validator->messages());
+			return Redirect::back();
+		}
+
+		// Updating
 		$item = $config['model']->find($id);
 		$item->update(Input::get());
 
+		Session::flash('message.success', trans( 'admin.added', ['id' => $id] ));
 		return Redirect::route('admin.'.$this->module.'.index');
 
 	}
@@ -84,7 +123,7 @@ class AdminController extends Controller {
 		$item = $config['model']->find($id);
 		$item->delete();
 
-		Session::flash('message', trans( 'admin.deleted', ['id' => $id] ));
+		Session::flash('message.success', trans( 'admin.deleted', ['id' => $id] ));
 
 		return Redirect::back();
 	}

@@ -177,8 +177,28 @@
 						 </div>
 					</div>
 					<div class="rightside">
+		
+						<!-- Messages -->
 						@if (Session::has('message'))
-							<div class="alert alert-success">{{ Session::get('message') }}</div>
+							
+							@if (Session::has('message.success'))
+								<div class="alert alert-success">
+									<ul>
+									@foreach (Session::get('message.success')->all() as $m)
+										<li>{{ $m }}</li>
+									@endforeach
+									</ul>
+								</div>
+							@endif
+							@if (Session::has('message.error'))
+								<div class="alert alert-danger">
+									<ul>
+									@foreach (Session::get('message.error')->all() as $m)
+										<li>{{ $m }}</li>
+									@endforeach
+									</ul>
+								</div>
+							@endif
 						@endif
 
 						@yield('content')

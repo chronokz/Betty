@@ -9,7 +9,8 @@ return [
 	'form' => [
 		'title' => [
 			'label' => 'Заголовок',
-			'type' => 'text'
+			'type' => 'text',
+			'valid' => 'required',
 		],
 		'alias' => [
 			'label' => 'Алиас',
