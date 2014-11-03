@@ -18,6 +18,7 @@
 			{{ admin_js('vendor/html5shiv/html5shiv.js') }}
 			{{ admin_js('vendor/respond/respond.min.js') }}
 		<![endif]-->
+
 	</head>
 	<body class="fixed">
 		<!-- Header -->
@@ -191,6 +192,8 @@
 		
 		<!-- Bootstrap -->
 		{{ admin_js('js/plugins/bootstrap/bootstrap.min.js') }}
+		{{ admin_js('js/plugins/ckeditor/ckeditor.js') }}
+		{{ admin_js('js/plugins/ckfinder/ckfinder.js') }}
 		
 		<!-- Interface -->
 		{{ admin_js('js/plugins/slimScroll/jquery.slimscroll.min.js') }}
