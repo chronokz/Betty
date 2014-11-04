@@ -66,13 +66,16 @@ class AdminController extends Controller {
 
 		// Validating
 		$rules = [];
+		$attrs = [];
 		foreach ($config['form'] as $field => $option) {
 			if (isset($option['valid']))
 			{
 				$rules[$field] = $option['valid'];
+				$attrs[$field] = $option['label'];
 			}
 		}
 		$validator = Validator::make(Input::get(), $rules);
+		$validator->setAttributeNames($attrs);
 
 		if ($validator->fails())
 		{
@@ -94,13 +97,16 @@ class AdminController extends Controller {
 
 		// Validating
 		$rules = [];
+		$attrs = [];
 		foreach ($config['form'] as $field => $option) {
 			if (isset($option['valid']))
 			{
 				$rules[$field] = $option['valid'];
+				$attrs[$field] = $option['label'];
 			}
 		}
 		$validator = Validator::make(Input::get(), $rules);
+		$validator->setAttributeNames($attrs);
 
 		if ($validator->fails())
 		{
