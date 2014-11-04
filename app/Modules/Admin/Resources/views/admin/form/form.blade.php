@@ -17,7 +17,17 @@
 					{{ Form::open(array('url' => $save_url, 'class' => 'form-horizontal', 'method' => $method)) }}
 						
 						@foreach ($form as $name => $input)
-							@include('admin::admin.form_input.'.$input['type'])
+							<?php
+								$class = '';
+								if (Session::has('message.error') && Session::get('message.error')->has($name))
+								{
+									$class = 'has-error';
+								}
+
+							?>
+							<div class="form-group {{ $class }}">
+								@include('admin::admin.form_input.'.$input['type'])
+							</div>
 						@endforeach
 											
 					{{ Form::close() }}
