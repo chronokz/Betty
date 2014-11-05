@@ -14,7 +14,7 @@ class AddGroupToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->integer('group');
+			$table->integer('group_id');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddGroupToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->dropColumn('group');
+			$table->dropColumn('group_id');
 		});
 	}
 

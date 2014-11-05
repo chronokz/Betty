@@ -9,6 +9,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 	{
 		Route::get('/', ['as' => 'admin.home', 'uses' => 'AdminController@home']);
 		Route::resource('pages', 'Pages\\PageController');
+		Route::resource('users', 'Users\\UserController');
 		Route::controller('logout', 'Auth\\LogoutController');
 	});
 });

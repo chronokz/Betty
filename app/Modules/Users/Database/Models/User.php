@@ -1,4 +1,4 @@
-<?php namespace Modules\Admin\Database\Models;
+<?php namespace Modules\Users\Database\Models;
 
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
