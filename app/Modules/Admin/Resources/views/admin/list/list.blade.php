@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="page-head">
-	<a href="{{ URL::route('admin.pages.create') }}" class="btn btn-labeled btn-primary pull-right">
+	<a href="{{ $create_url }}" class="btn btn-labeled btn-primary pull-right">
 		<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
 		{{ trans('admin.create')}}
 	</a>

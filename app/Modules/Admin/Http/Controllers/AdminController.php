@@ -26,6 +26,7 @@ class AdminController extends Controller {
 		$data['title'] = trans($config['title']);
 		$data['sub_title'] = trans('admin.listing');
 		$data['list_title'] = trans('admin.list_title');
+		$data['create_url'] = URL::route('admin.'.$this->module.'.create');
 
 		return admin_view('admin.list.list', $data);
 	}
