@@ -1,25 +1,18 @@
+<?php
+	$menu = Config::get('admin::admin_menu');
+?>
+
 <ul class="sidebar-menu">
-	<li>
-		<a href="index.html">
-			<i class="fa fa-users"></i> <span>Users</span>
-		</a>
-	</li>
-	<li class="active">
-		<a href="index.html">
-			<i class="fa fa-copy"></i> <span>Pages</span>
-		</a>
-	</li>
-	<li>
-		<a href="inbox.html">
-			<i class="fa fa-envelope"></i> <span>Feedback</span>
-			<small class="label pull-right">10</small>
-		</a>
-	</li>
-	<li>
-		<a href="index.html">
-			<i class="fa fa-wrench"></i> <span>System</span>
-		</a>
-	</li>
+
+	@foreach ($menu as $item)
+		<li>
+			<a href="{{ $item['url'] }}">
+				<i class="fa fa-{{ $item['icon'] }}"></i>
+				<span>{{ $item['text'] }}</span>
+			</a>
+		</li>
+	@endforeach
+
 	<!-- 
 	For examples:
 		Simple menu:
