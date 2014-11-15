@@ -40,7 +40,7 @@ class AdminController extends Controller {
 		$data['item'] = $config['model']->find($id);
 		$data['title'] = trans($config['title']);
 		$data['sub_title'] = trans('admin.showing');
-		$data['form_title'] = trans('admin.form_title');
+		$data['form_title'] = trans('admin.show_title');
 		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
 
 		return admin_view('admin.show.show', $data);	
