@@ -14,7 +14,7 @@ class AdminController extends Controller {
 
 	public function home()
 	{
-		return Redirect::route('admin.pages.index');
+		return Redirect::route('admin.users.index');
 	}
 
 	public function index()
@@ -119,7 +119,7 @@ class AdminController extends Controller {
 		$item = $config['model']->find($id);
 		$item->update(Input::get());
 
-		Session::flash('message.success', trans( 'admin.added', ['id' => $id] ));
+		Session::flash('message.success', trans( 'admin.edited', ['id' => $id] ));
 		return Redirect::route('admin.'.$this->module.'.index');
 
 	}

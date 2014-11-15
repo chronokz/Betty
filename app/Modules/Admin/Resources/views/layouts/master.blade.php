@@ -23,7 +23,7 @@
 	<body class="fixed">
 		<!-- Header -->
 		<header>
-			<a href="index.html" class="logo"><i class="fa fa-gears"></i> <span>Black Betty</span></a>
+			<a href="{{ URL::route('admin.home') }}" class="logo"><i class="fa fa-gears"></i> <span>Black Betty</span></a>
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="navbar-btn sidebar-toggle">
 					<span class="sr-only">Toggle navigation</span>
@@ -184,7 +184,15 @@
 							@if (Session::has('message.success'))
 								<div class="alert alert-success">
 									<ul>
-									@foreach (Session::get('message.success')->all() as $m)
+									<?php
+										$messages = Session::get('message.success');
+										// If will be show some errors with string uncommented it
+										// if (!is_string($messages))
+										// {
+										// 	$messages = $messages->all();
+										// }
+									?>
+									@foreach ((array)$messages as $m)
 										<li>{{ $m }}</li>
 									@endforeach
 									</ul>

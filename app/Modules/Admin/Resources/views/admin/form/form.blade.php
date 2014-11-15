@@ -24,6 +24,15 @@
 									$class = 'has-error';
 								}
 
+								if (isset($input['value']))
+								{
+									$value = $input['value'];
+								}
+								else if(isset($item->$name))
+								{
+									$value = $item->$name;
+								}
+
 							?>
 							<div class="form-group {{ $class }}">
 								@include('admin::admin.form_input.'.$input['type'])

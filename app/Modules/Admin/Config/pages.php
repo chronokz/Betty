@@ -2,7 +2,7 @@
 
 return [
 
-	'title' => 'admin::modules.pages.title',
+	'title' => 'Страницы',
 	'model' => new Modules\Pages\Database\Models\Page,
 
 	// For Add and Edit

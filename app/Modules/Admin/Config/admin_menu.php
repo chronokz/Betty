@@ -17,7 +17,7 @@ return [
 		'text' => 'Заявки',
 	],
 	[
-		'url' => '',
+		'url' => URL::route('admin.config.index'),
 		'icon' => 'wrench',
 		'text' => 'Настройки'
 	]
