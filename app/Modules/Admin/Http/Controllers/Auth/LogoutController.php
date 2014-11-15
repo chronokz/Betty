@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class LogoutController extends Controller {
 
-	public function getIndex()
+	public function index()
 	{
 		Auth::logout();
 
