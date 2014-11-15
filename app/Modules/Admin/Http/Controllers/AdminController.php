@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller {
 
 	public $module = 'home';
+	public $create = true;
 
 	public function home()
 	{
@@ -27,8 +28,22 @@ class AdminController extends Controller {
 		$data['sub_title'] = trans('admin.listing');
 		$data['list_title'] = trans('admin.list_title');
 		$data['create_url'] = URL::route('admin.'.$this->module.'.create');
+		$data['create'] = $this->create;
 
 		return admin_view('admin.list.list', $data);
+	}
+
+	public function show($id)
+	{
+		$config = Config::get('admin::'.$this->module);
+		$data['form'] = $config['show'];
+		$data['item'] = $config['model']->find($id);
+		$data['title'] = trans($config['title']);
+		$data['sub_title'] = trans('admin.showing');
+		$data['form_title'] = trans('admin.form_title');
+		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
+
+		return admin_view('admin.show.show', $data);	
 	}
 
 	public function create()

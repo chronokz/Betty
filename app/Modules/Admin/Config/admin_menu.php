@@ -12,7 +12,7 @@ return [
 		'text' => 'Страницы',
 	],
 	[
-		'url' => '',
+		'url' => URL::route('admin.feedback.index'),
 		'icon' => 'envelope',
 		'text' => 'Заявки',
 	],

@@ -3,10 +3,12 @@
 @section('content')
 
 <div class="page-head">
-	<a href="{{ $create_url }}" class="btn btn-labeled btn-primary pull-right">
-		<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
-		{{ trans('admin.create')}}
-	</a>
+	@if ($create)
+		<a href="{{ $create_url }}" class="btn btn-labeled btn-primary pull-right">
+			<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+			{{ trans('admin.create')}}
+		</a>
+	@endif
 	<h1>{{ $title }}  <small>{{ $sub_title }}</small></h1>
 </div>
 
