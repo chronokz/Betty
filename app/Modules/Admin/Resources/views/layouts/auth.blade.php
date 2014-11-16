@@ -22,7 +22,7 @@
 	</head>
 	<body class="login fixed">
 		<div class="wrapper animated flipInY">
-			<div class="logo"><a href="#"><i class="fa fa-bitcoin"></i> <span>Betty</span></a></div>
+			<div class="logo"><a href="#"><i class="fa fa-bold"></i> <span>Betty</span></a></div>
 			
 			@yield('content')
 			

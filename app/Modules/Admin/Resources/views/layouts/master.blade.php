@@ -23,7 +23,7 @@
 	<body class="fixed">
 		<!-- Header -->
 		<header>
-			<a href="{{ URL::route('admin.home') }}" class="logo"><i class="fa fa-bitcoin"></i> <span>Betty</span></a>
+			<a href="{{ URL::route('admin.home') }}" class="logo"><i class="fa fa-bold"></i> <span>Betty</span></a>
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="navbar-btn sidebar-toggle">
 					<span class="sr-only">Toggle navigation</span>
