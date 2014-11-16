@@ -35,6 +35,10 @@ return [
 
 	// For listing
 	'list' => [
+		'image' => [
+			'label' => '',
+			'type' => 'image'
+		],
 		'title' => [
 			'label' => 'Заголовок',
 		],

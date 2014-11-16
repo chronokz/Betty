@@ -1,0 +1,1 @@
+{{ HTML::image($file_url.'/'.$name.'/admin_'.$item->$name) }}

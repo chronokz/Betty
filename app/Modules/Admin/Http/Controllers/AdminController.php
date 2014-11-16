@@ -38,6 +38,7 @@ class AdminController extends Controller {
 		$data['title'] = trans($config['title']);
 		$data['sub_title'] = trans('admin.listing');
 		$data['list_title'] = trans('admin.list_title');
+		$data['file_url'] = self::upload_link($this->module);
 		$data['create_url'] = URL::route('admin.'.$this->module.'.create');
 		$data['create'] = $this->create;
 
@@ -52,6 +53,7 @@ class AdminController extends Controller {
 		$data['title'] = trans($config['title']);
 		$data['sub_title'] = trans('admin.showing');
 		$data['form_title'] = trans('admin.show_title');
+		$data['file_url'] = self::upload_link($this->module);
 		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
 
 		return admin_view('admin.show.show', $data);	
@@ -114,7 +116,9 @@ class AdminController extends Controller {
 
 		// Creating
 		$item = $config['model'];
-		$item->create(Input::get());
+		$data = Input::get();
+		$data = self::save_files($item, $data);
+		$item->create($data);
 
 		Session::flash('message.success', trans( 'admin.added' ));
 		return Redirect::route('admin.'.$this->module.'.index');
@@ -143,64 +147,10 @@ class AdminController extends Controller {
 			return Redirect::back();
 		}
 
-		$data = Input::get();
-		$item = $config['model']->find($id);
-
-		if (Input::file())
-		{
-			foreach (Input::file() as $input => $file)
-			{
-				if (Input::file($input)->isValid())
-				{
-
-					$folder = self::upload_path()
-						.$this->module.'/'
-						.$input.'/';
-
-					\File::makeDirectory($folder, 0777, true, true);
-
-					// Removing old files
-					if ($item->$input)
-					{
-						array_map('unlink', glob($folder.$item->$input.'*'));
-					}
-
-					// Naming new file
-					$file_name = time().'.'.Input::file($input)->getClientOriginalExtension();
-					$save_to = $folder.$file_name;
-
-					if ($config['form'][$input]['type'] == 'file')
-					{
-						Input::file($input)->move($save_to);
-					}
-
-					if ($config['form'][$input]['type'] == 'image')
-					{
-						foreach ($config['form'][$input]['image'] as $image_config)
-						{
-							$method = $image_config['method'];
-							list($width, $height) = $image_config['size'];
-
-							if (isset($image_config['prefix']))
-							{
-								// Naming new file with prefix
-								$file_name = $image_config['prefix'].'_'.time().'.'
-									.Input::file($input)->getClientOriginalExtension();
-								$save_to = $folder.$file_name;
-							}
-
-							\Image::make(Input::file($input))
-								->$method($width, $height)
-								->save($save_to);
-						}
-					}
-
-					$data[$input] = $file_name;
-				}
-			}
-		}
-
 		// Updating
+		$item = $config['model']->find($id);
+		$data = Input::get();
+		$data = self::save_files($item, $data);
 		$item->update($data);
 
 		Session::flash('message.success', trans( 'admin.edited', ['id' => $id] ));
@@ -217,6 +167,84 @@ class AdminController extends Controller {
 		Session::flash('message.success', trans( 'admin.deleted', ['id' => $id] ));
 
 		return Redirect::back();
+	}
+
+	protected function save_files($model, $data)
+	{
+		$config = Config::get('admin::'.$this->module);
+		
+		if (Input::file())
+		{
+			foreach (Input::file() as $input => $file)
+			{
+				if (Input::file($input)->isValid())
+				{
+
+					$folder = self::upload_path()
+						.$this->module.'/'
+						.$input.'/';
+
+					\File::makeDirectory($folder, 0777, true, true);
+
+					// Removing old files
+					if ($model->$input)
+					{
+						array_map('unlink', glob($folder.$model->$input.'*'));
+					}
+
+					// Naming new file
+					$file_name = time();
+					$file_ext = Input::file($input)->getClientOriginalExtension();
+					$file = $file_name.'.'.$file_ext;
+					$save_to = $folder.$file;
+
+					if ($config['form'][$input]['type'] == 'file')
+					{
+						Input::file($input)->move($save_to);
+					}
+
+					if ($config['form'][$input]['type'] == 'image')
+					{
+						// Create small icon for admin listing
+						$admin_image = [
+							'method' => 'fit',
+							'size' => [34, 34],
+							'prefix' => 'admin'
+						];
+						array_unshift($config['form'][$input]['image'], $admin_image);
+
+						$origin_name = $file_name;
+
+						foreach ($config['form'][$input]['image'] as $image_config)
+						{
+							$method = $image_config['method'];
+							list($width, $height) = $image_config['size'];
+
+							if (isset($image_config['prefix']))
+							{
+								// Naming new file with prefix
+								$file_name = $image_config['prefix'].'_'.$origin_name;
+							}
+							else
+							{
+								// Naminfileg new file without prefix
+								$file_name = $origin_name;
+							}
+
+							$file = $file_name.'.'.$file_ext;
+							$save_to = $folder.$file;
+
+							\Image::make(Input::file($input))
+								->$method($width, $height)
+								->save($save_to);
+						}
+					}
+
+					$data[$input] = $file;
+				}
+			}
+		}
+		return $data;
 	}
 
 }
