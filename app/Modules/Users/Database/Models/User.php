@@ -35,7 +35,9 @@ class User extends Model implements UserInterface, RemindableInterface {
 		'username',
 		'email',
 		'password',
-		'remember_token'
+		'remember_token',
+		'avatar',
+		'group_id'
 	];
 
     /**
@@ -46,6 +48,11 @@ class User extends Model implements UserInterface, RemindableInterface {
     public function setPasswordAttribute($value)
 	{
 		$this->attributes['password'] = Hash::make($value);
+	}
+
+	public function avatar()
+	{
+		return asset('uploads/users/avatar/'.$this->attributes['avatar']);
 	}
 
 }

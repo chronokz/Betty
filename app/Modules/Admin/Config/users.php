@@ -7,6 +7,14 @@ return [
 
 	// For Add and Edit
 	'form' => [
+		'avatar' => [
+			'label' => 'Аватар',
+			'type' => 'image',
+			'image' => [[
+				'method' => 'fit',
+				'size' => [48,48]
+			]]
+		],
 		'name' => [
 			'label' => 'Имя',
 			'type' => 'text',
@@ -38,6 +46,10 @@ return [
 
 	// For listing
 	'list' => [
+		'avatar' => [
+			'label' => 'Аватар',
+			'type' => 'image'
+		],
 		'email' => [
 			'label' => 'E-mail',
 		],
@@ -46,6 +58,8 @@ return [
 		],
 		'group_id' => [
 			'label' => 'Грппа',
+			'type' => 'one_of',
+			'options' => \Modules\Users\Database\Models\Group::lists('name', 'id') 
 		],
 		'buttons' => [
 			'type' => 'buttons',

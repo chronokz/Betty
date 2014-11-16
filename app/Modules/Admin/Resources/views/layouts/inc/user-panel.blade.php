@@ -1,6 +1,6 @@
 <li class="dropdown widget-user">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		{{ admin_img('img/avatar.jpg', '', ['class' => 'pull-left']) }}
+		{{ HTML::Image(Auth::user()->avatar(), '', ['class' => 'pull-left']) }}
 		<span>{{ Auth::user()->name }} <i class="fa fa-caret-down"></i></span>
 	</a>
 	<ul class="dropdown-menu">

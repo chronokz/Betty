@@ -1,6 +1,6 @@
 <div class="user-box">
 	<div class="avatar">
-		{{ admin_img('img/avatar.jpg') }}
+		{{ HTML::Image(Auth::user()->avatar()) }}
 	</div>
 	<div class="details">
 		<p>{{ Auth::user()->name }}</p>

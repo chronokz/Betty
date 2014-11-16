@@ -177,7 +177,7 @@ class AdminController extends Controller {
 		{
 			foreach (Input::file() as $input => $file)
 			{
-				if (Input::file($input)->isValid())
+				if (Input::file($input) && Input::file($input)->isValid())
 				{
 
 					$folder = self::upload_path()

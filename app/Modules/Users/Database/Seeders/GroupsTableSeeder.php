@@ -14,7 +14,8 @@ class GroupsTableSeeder extends Seeder {
 	public function run()
 	{
 		Group::create([
-			'name'		=>	'Administrator'
+			'name'		=>	'Администратор',
+			'alias'		=>	'admin',
 		]);
 	}
 
