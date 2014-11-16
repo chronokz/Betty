@@ -2,8 +2,8 @@
 
 return [
 
-	'title' => 'Социальные ссылки',
-	'model' => new Modules\Social\Database\Models\SocialLink,
+	'title' => 'Слайдер',
+	'model' => new Modules\Slider\Database\Models\Slider,
 
 	// For Add and Edit
 	'form' => [
@@ -11,15 +11,22 @@ return [
 			'label' => 'Заголовок',
 			'type' => 'text',
 		],
+		'description' => [
+			'label' => 'Описание',
+			'type' => 'textarea',
+		],
 		'link' => [
 			'label' => 'Ссылка',
 			'type' => 'text',
-			'valid' => 'required|url',
 		],
-		'icon' => [
-			'label' => 'Иконка',
-			'type' => 'select',
-			'options' => \Modules\Social\Database\Models\SocialLink::$icons,
+		'image' => [
+			'label' => 'Изображение',
+			'type' => 'image',
+			'valid' => 'image',
+			'image' => [[
+				'method' => 'fit',
+				'size' => [1366, 595]
+			]]
 		],
 		'submits' => [
 			'type' => 'submit'
@@ -28,16 +35,8 @@ return [
 
 	// For listing
 	'list' => [
-		'icon' => [
-			'label' => 'Иконка',
-			'type' => 'faicon'
-		],
 		'title' => [
 			'label' => 'Заголовок',
-		],
-		'link' => [
-			'label' => 'Ссылка',
-			'type' => 'link',
 		],
 		'buttons' => [
 			'type' => 'buttons',

@@ -7,7 +7,8 @@ function admin_view($view, $data = [], $mergeData = [])
 
 function admin_redirect($route = null)
 {
-	if( ! is_null($route)) return Redirect::route('admin.' . $route);
+	if( ! is_null($route))
+		return Redirect::route('admin.' . $route);
 
 	return app('redirect');
 }

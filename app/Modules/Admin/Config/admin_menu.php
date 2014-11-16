@@ -12,19 +12,24 @@ return [
 		'text' => 'Страницы',
 	],
 	[
+		'url' => URL::route('admin.slider.index'),
+		'icon' => 'image',
+		'text' => 'Слайдер',
+	],
+	[
 		'url' => URL::route('admin.feedback.index'),
 		'icon' => 'envelope',
 		'text' => 'Заявки',
 	],
 	[
-		'url' => URL::route('admin.config.index'),
-		'icon' => 'wrench',
-		'text' => 'Настройки'
-	],
-	[
 		'url' => URL::route('admin.social_links.index'),
 		'icon' => 'heart',
 		'text' => 'Социальные ссылки'
+	],
+	[
+		'url' => URL::route('admin.config.index'),
+		'icon' => 'wrench',
+		'text' => 'Настройки'
 	]
 
 ];
