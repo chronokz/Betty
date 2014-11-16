@@ -55,24 +55,25 @@
 						@if (Session::has('message'))
 							
 							@if (Session::has('message.success'))
-								<div class="alert alert-success">
-									<ul>
+								<div class="alert alert-success no-radius">
 									<?php
 										$messages = Session::get('message.success');
-										// If will be show some errors with string uncommented it
-										// if (!is_string($messages))
-										// {
-										// 	$messages = $messages->all();
-										// }
 									?>
-									@foreach ((array)$messages as $m)
-										<li>{{ $m }}</li>
-									@endforeach
-									</ul>
+
+									@if (is_string($messages))
+										{{ $messages }}
+									@else
+										<ul>
+											@foreach ((array)$messages as $m)
+												<li>{{ $m }}</li>
+											@endforeach
+										</ul>
+									@endif
+
 								</div>
 							@endif
 							@if (Session::has('message.error'))
-								<div class="alert alert-danger">
+								<div class="alert alert-danger no-radius">
 									<ul>
 									@foreach (Session::get('message.error')->all() as $m)
 										<li>{{ $m }}</li>

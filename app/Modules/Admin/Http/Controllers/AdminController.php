@@ -120,7 +120,7 @@ class AdminController extends Controller {
 		$data = self::save_files($item, $data);
 		$item->create($data);
 
-		Session::flash('message.success', trans( 'admin.added' ));
+		Session::flash('message.success', trans( 'admin.added', ['id' => $item->id] ));
 		return Redirect::route('admin.'.$this->module.'.index');
 	}
 
