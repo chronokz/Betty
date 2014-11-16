@@ -17,6 +17,11 @@ return [
 		'text' => 'Слайдер',
 	],
 	[
+		'url' => URL::route('admin.products.index'),
+		'icon' => 'cubes',
+		'text' => 'Оборудование',
+	],
+	[
 		'url' => URL::route('admin.feedback.index'),
 		'icon' => 'envelope',
 		'text' => 'Заявки',
