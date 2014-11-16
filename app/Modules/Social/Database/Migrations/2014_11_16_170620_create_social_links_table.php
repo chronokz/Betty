@@ -17,7 +17,7 @@ class CreateSocialLinksTable extends Migration {
             $table->increments('id');
 		    $table->string('title');
             $table->string('link');
-            $table->string('type');
+            $table->string('icon');
 		});
 	}
 

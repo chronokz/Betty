@@ -1,0 +1,1 @@
+<a href="{{ $item->$name }}" target="_blank">{{ str_limit($item->$name, 50) }}</a>

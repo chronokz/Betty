@@ -35,12 +35,14 @@ return [
 	'list' => [
 		'icon' => [
 			'label' => 'Иконка',
+			'type' => 'faicon'
 		],
 		'title' => [
 			'label' => 'Заголовок',
 		],
 		'link' => [
-			'label' => 'Алиас',
+			'label' => 'Ссылка',
+			'type' => 'link',
 		],
 		'buttons' => [
 			'type' => 'buttons',

@@ -9,10 +9,10 @@ class SocialLink extends Model {
 	public $timestamps = false;
 
 	public static $icons = [
-		'skype',
-		'twitter',
-		'facebook-square',
-		'vk'
+		'skype' => 'skype',
+		'twitter' => 'twitter',
+		'facebook-square' => 'facebook-square',
+		'vk' => 'vk',
 	];
 
 	protected $fillable = [

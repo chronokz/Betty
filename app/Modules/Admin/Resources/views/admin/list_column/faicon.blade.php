@@ -1,0 +1,1 @@
+<i class="fa fa-{{ $item->$name }}" style="font-size:32px"></i>
