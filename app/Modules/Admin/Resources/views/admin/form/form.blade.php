@@ -24,6 +24,7 @@
 									$class = 'has-error';
 								}
 
+								$value = false;
 								if (isset($input['value']))
 								{
 									$value = $input['value'];

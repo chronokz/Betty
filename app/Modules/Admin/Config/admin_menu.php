@@ -20,6 +20,11 @@ return [
 		'url' => URL::route('admin.config.index'),
 		'icon' => 'wrench',
 		'text' => 'Настройки'
+	],
+	[
+		'url' => URL::route('admin.social_links.index'),
+		'icon' => 'heart',
+		'text' => 'Социальные ссылки'
 	]
 
 ];

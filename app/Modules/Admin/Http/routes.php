@@ -14,5 +14,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('pages', 'Pages\\PageController');
 		Route::resource('users', 'Users\\UserController');
 		Route::resource('feedback', 'Feedback\\FeedbackController');
+		Route::resource('social_links', 'SocialLinksController');
 	});
 });
