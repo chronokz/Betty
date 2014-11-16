@@ -1,0 +1,25 @@
+{
+    "name": "gravitano/helpers",
+    "description": "Laravel 4 - Helpers",
+    "keywords": ["gravitano", "laravel", "helpers"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gravitano",
+            "email": "gravitano16@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravel/framework": "4.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Gravitano\\Helpers": "src/"
+        },
+        "files": [
+            "src/Gravitano/Helpers/helpers.php"
+        ]
+    },
+    "minimum-stability": "stable"
+}
