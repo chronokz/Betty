@@ -29,11 +29,10 @@ return [
 			'type' => 'text',
 			'valid' => 'required',
 		],
-		// 'password' => [
-		// 	'label' => 'Пароль',
-		// 	'type' => 'text',
-		// 	'valid' => 'password',
-		// ],
+		'password' => [
+			'label' => 'Пароль',
+			'type' => 'password'
+		],
 		'group_id' => [
 			'label' => 'Группа',
 			'type' => 'select',
