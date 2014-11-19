@@ -34,7 +34,10 @@ class AdminController extends Controller {
 		$config = Config::get('admin::'.$this->module);
 		$data['module'] = $this->module;
 		$data['list'] = $config['list'];
-		$data['items'] = $config['model']->all();
+
+		$items = self::ordered_items();
+		$data['items'] = $items->get();
+
 		$data['title'] = trans($config['title']);
 		$data['sub_title'] = trans('admin.listing');
 		$data['list_title'] = trans('admin.list_title');
@@ -167,6 +170,17 @@ class AdminController extends Controller {
 		Session::flash('message.success', trans( 'admin.deleted', ['id' => $id] ));
 
 		return Redirect::back();
+	}
+
+	protected function ordered_items()
+	{
+		$config = Config::get('admin::'.$this->module);
+		if (isset($config['order']))
+		{
+			$order = (isset($config['order'][1])) ? $config['order'][1] : 'asc';
+			$config['model'] = $config['model']->orderBy($config['order'][0], $order);
+		}
+		return $config['model'];
 	}
 
 	protected function save_files($model, $data)

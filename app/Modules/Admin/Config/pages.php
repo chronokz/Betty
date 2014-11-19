@@ -4,6 +4,8 @@ return [
 
 	'title' => 'Страницы',
 	'model' => new Modules\Pages\Database\Models\Page,
+	'order' => ['title', 'asc'],
+
 
 	// For Add and Edit
 	'form' => [
