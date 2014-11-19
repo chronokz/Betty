@@ -45,7 +45,13 @@ class AdminController extends Controller {
 		$data['create_url'] = URL::route('admin.'.$this->module.'.create');
 		$data['create'] = $this->create;
 
-		return admin_view('admin.list.list', $data);
+		$render_view = 'admin.list.list';
+		if (is_string($config['list']))
+		{
+			$render_view = $config['list'];
+		}
+
+		return admin_view($render_view, $data);
 	}
 
 	public function show($id)

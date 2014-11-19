@@ -101,8 +101,12 @@
 		{{ admin_js('js/plugins/slimScroll/jquery.slimscroll.min.js') }}
 		{{ admin_js('js/plugins/pace/pace.min.js') }}
 		
+		<!-- Menu -->
+		{{ admin_js('js/plugins/nestedSortable/jquery.mjs.nestedSortable.js') }}
+		
 		<!-- Forms -->
 		{{ admin_js('js/custom.js') }}
 		{{ admin_js('js/admin.js') }}
+
 	</body>
 </html>

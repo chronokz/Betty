@@ -48,6 +48,7 @@
 						</tr>
 					  	@endforeach
 					  </tbody>
+					  </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
