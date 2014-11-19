@@ -1,11 +1,12 @@
 <?php
 	$menu = Config::get('admin::admin_menu');
+	$url = URL::current();
 ?>
 
 <ul class="sidebar-menu">
 
 	@foreach ($menu as $item)
-		<li>
+		<li{{ ($url == $item['url']?' class="active"':'') }}>
 			<a href="{{ $item['url'] }}">
 				<i class="fa fa-{{ $item['icon'] }}"></i>
 				<span>{{ $item['text'] }}</span>
