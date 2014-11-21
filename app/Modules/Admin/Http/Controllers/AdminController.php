@@ -159,6 +159,7 @@ class AdminController extends Controller {
 		// Updating
 		$item = $config['model']->find($id);
 		$data = Input::get();
+		$data = self::save_password($data);
 		$data = self::save_files($item, $data);
 		$item->update($data);
 
@@ -187,6 +188,19 @@ class AdminController extends Controller {
 			$config['model'] = $config['model']->orderBy($config['order'][0], $order);
 		}
 		return $config['model'];
+	}
+
+	protected function save_password($data)
+	{
+		$config = Config::get('admin::'.$this->module);
+		foreach ($config['form'] as $name => $field)
+		{
+			if ($field['type'] == 'password' && !trim($data[$name]))
+			{
+				unset($data[$name]);
+			}
+		}
+		return $data;
 	}
 
 	protected function save_files($model, $data)
