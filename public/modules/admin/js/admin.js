@@ -24,6 +24,7 @@ $('.menu > ol').nestedSortable({
 });
 
 $('.save-menu').click(function(e){
+	url = $(this).attr('href');
 	$('.save-waiting').show('slow');
 	e.preventDefault();
 	arraied = $('.menu > ol').nestedSortable('toArray');
@@ -35,7 +36,7 @@ $('.save-menu').click(function(e){
 		result[arraied[i]['item_id']] = JSON.stringify(arraied[i]);
 	}
 
-	$.post('', result, function(data){
+	$.post(url, result, function(data){
 		$('.save-waiting').hide('slow');
 		$('.save-status').html(data.status).fadeIn('slow');
 		$('.save-menu').removeClass('active');

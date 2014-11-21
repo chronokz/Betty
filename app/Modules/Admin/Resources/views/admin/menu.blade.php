@@ -61,7 +61,7 @@
 			<span class="save-waiting"></span>
 			<span class="save-status"></span>
 
-			<a href="" class="btn btn-labeled btn-success pull-right save-menu">
+			<a href="{{ URL::route('admin.menu.sort') }}" class="btn btn-labeled btn-success pull-right save-menu">
 				<span class="btn-label"><i class="fa fa-save"></i></span>
 				{{ trans('admin.save') }}
 			</a>

@@ -7,7 +7,7 @@ class MenuController extends AdminController {
 
 	public $module = 'menu';
 
-	public function save()
+	public function sort()
 	{
 		$items = \Input::get();
 		unset($items['null']);

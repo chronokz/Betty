@@ -18,6 +18,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('slider', 'SliderController');
 		Route::resource('products', 'ProductsController');
 		Route::resource('menu', 'MenuController');
-		Route::post('menu', ['as' => 'admin.menu.save', 'uses' => 'MenuController@save']);
+		Route::post('menu/sort', ['as' => 'admin.menu.sort', 'uses' => 'MenuController@sort']);
 	});
 });
