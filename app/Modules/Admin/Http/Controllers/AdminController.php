@@ -70,8 +70,9 @@ class AdminController extends Controller {
 
 	public function create()
 	{
+
 		$config = Config::get('admin::'.$this->module);
-		$data['form'] = $config['form'];
+		$data['form'] = self::load_form();
 		$data['item'] = $config['model'];
 		$data['title'] = trans($config['title']);
 		$data['sub_title'] = trans('admin.creating');
@@ -87,10 +88,10 @@ class AdminController extends Controller {
 	public function edit($id)
 	{
 		$config = Config::get('admin::'.$this->module);
-		$data['form'] = $config['form'];
+		$data['form'] = self::load_form();
 		$data['item'] = $config['model']->find($id);
 		$data['title'] = trans($config['title']);
-		$data['sub_title'] = trans('admin.creating');
+		$data['sub_title'] = trans('admin.editing');
 		$data['form_title'] = trans('admin.form_title');
 		$data['file_url'] = self::upload_link($this->module);
 		$data['save_url'] = URL::route('admin.'.$this->module.'.update', $id);
@@ -119,6 +120,7 @@ class AdminController extends Controller {
 
 		if ($validator->fails())
 		{
+			Input::flash();
 			Session::flash('message.error', $validator->messages());
 			return Redirect::back();
 		}
@@ -152,6 +154,7 @@ class AdminController extends Controller {
 
 		if ($validator->fails())
 		{
+			Input::flash();
 			Session::flash('message.error', $validator->messages());
 			return Redirect::back();
 		}
@@ -188,6 +191,19 @@ class AdminController extends Controller {
 			$config['model'] = $config['model']->orderBy($config['order'][0], $order);
 		}
 		return $config['model'];
+	}
+
+	protected function load_form()
+	{
+		$form = Config::get('admin::'.$this->module.'.form');
+		if (Input::old())
+		{
+			foreach ($form as $name => $field)
+			{
+				$form[$name]['value'] = Input::old($name);
+			}
+		}
+		return $form;
 	}
 
 	protected function save_password($data)
