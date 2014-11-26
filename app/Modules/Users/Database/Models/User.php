@@ -52,6 +52,9 @@ class User extends Model implements UserInterface, RemindableInterface {
 
 	public function avatar()
 	{
+		if(!isset($this->attributes['avatar']))
+			return false;
+		
 		return asset('uploads/users/avatar/'.$this->attributes['avatar']);
 	}
 

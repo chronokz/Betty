@@ -237,7 +237,7 @@ class AdminController extends Controller {
 					\File::makeDirectory($folder, 0777, true, true);
 
 					// Removing old files
-					if ($model->$input)
+					if ($model->id && $model->$input)
 					{
 						array_map('unlink', glob($folder.$model->$input.'*'));
 					}
