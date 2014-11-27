@@ -19,5 +19,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('products', 'ProductsController');
 		Route::resource('menu', 'MenuController');
 		Route::post('menu/sort', ['as' => 'admin.menu.sort', 'uses' => 'MenuController@sort']);
+
+		Route::resource('code', 'CodeController');
 	});
+
 });

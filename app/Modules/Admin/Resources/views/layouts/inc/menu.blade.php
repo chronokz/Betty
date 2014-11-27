@@ -14,6 +14,13 @@
 		</li>
 	@endforeach
 
+	<li style="border-top: 1px solid #191919">
+		<a href="{{ URL::route('admin.code.index') }}">
+			<i class="fa fa-code"></i>
+			<span>Разработка</span>
+		</a>
+	</li>
+
 	<!-- 
 	For examples:
 		Simple menu:
