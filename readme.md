@@ -2,7 +2,7 @@ Betty (based on Laravel 4)
 ==========================
 
 ### Instalation
-1) Download on server and extract from the archive
+1) [Download](https://github.com/chronokz/Betty/archive/master.zip) on server and extract from the archive
 <br>
 2) Use dump or migrations with seeds for insert date to database
 <br>
