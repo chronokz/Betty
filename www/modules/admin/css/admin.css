@@ -1,0 +1,64 @@
+.user-box .details{
+	max-width: 138px;
+	overflow: hidden;
+	height: 50px;
+}
+
+.delete-destroy{
+	display: inline-block;
+}
+
+.uploaded_image{
+	max-width: 100%;
+	max-height: 400px;
+	padding: 5px;
+	border: 1px solid #d8dde5;
+	border-bottom: 0;
+}
+
+.menu > ol{
+	padding: 0;
+}
+
+.menu li{
+	margin-top: 5px;
+	list-style: none;
+}
+
+.menu li div{
+	border: 1px solid #d4d4d4;
+	border-radius: 3px;
+	border-color: #D4D4D4 #D4D4D4 #BCBCBC;
+	padding: 6px;
+	cursor: move;
+	background: #f6f6f6;
+	background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+	line-height: 30px;
+	padding-left: 20px;
+}
+
+.save-menu{
+	display: none;
+}
+
+.save-menu.active{
+	display: inline-block;
+}
+
+.save-status{
+	display: none;
+	font-style: italic;
+	color: #666;
+}
+
+.save-waiting{
+	width: 16px;
+	height: 16px;
+	background: url('../img/waiting.gif') no-repeat;
+	float: left;
+	display: none;
+}
+
+.buttons{
+	float: right;
+}

@@ -2,6 +2,10 @@
 
 @section('content')	
 <div class="page-head">
+	<a href="{{ URL::route('admin.code.create') }}" class="btn btn-labeled btn-primary pull-right">
+		<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+		{{ trans('admin.create')}}
+	</a>
 	<h1>Режим разработчика</h1>
 </div>
 
@@ -21,9 +25,9 @@
 							</tr>
 			         	</thead>
 			         	<tbody>
-						@foreach ($modules as $module)
-							<tr><td>{{ $module }}</td></tr>
-						@endforeach
+							@foreach ($modules as $module)
+								<tr><td>{{ $module }}</td></tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>

@@ -1,0 +1,36 @@
+image-url(img)
+	url(image_path+img)
+
+size()
+	if length(arguments) == 1
+		width arguments[0]
+		height arguments[0]
+	else
+		width arguments[0]
+		height arguments[1]
+
+back-stretch(image)
+	background-repeat no-repeat
+	background-position center center
+	background-image url(image)
+	filter unquote("progid: DXImageTransform.Microsoft.AlphaImageLoader(src='" + image + "', sizingMethod='scale')")
+	-ms-filter unquote("progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + image + "',sizingMethod='scale')")
+	-webkit-background-size cover
+	-moz-background-size cover
+	-o-background-size cover
+	background-size cover
+	
+placeholder-color(color)
+	::-webkit-input-placeholder
+		color color
+
+	:-moz-placeholder
+		color color
+		opacity 1
+
+	::-moz-placeholder
+		color color
+		opacity 1
+
+	:-ms-input-placeholder
+		color color
