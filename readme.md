@@ -1,6 +1,17 @@
 Betty (based on Laravel 4)
 ==========================
 
+### Instalation
+1) Download on server and extract from the archive
+2) Use dump or migrations with seeds for insert date to database
+3) Configure database \app\config\[env]\database.php 
+
+### Default access into admin
+[http://your_doman.com/admin](http://betty/admin)
+Login: **admin**
+Password: **Betty**
+
+
 ### Server Requirements
 
 - PHP 5.4 or higher
