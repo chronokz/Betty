@@ -13,5 +13,13 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	
+
+	$config = [];
+	foreach(Modules\Config\Database\Models\Config::all() as $item)
+	{
+		$config[$item->name] = $item->value;
+	}
+
+	return View::make('hello', compact('config'));
 });

@@ -283,6 +283,7 @@ class AdminController extends Controller {
 
 							$file = $file_name.'.'.$file_ext;
 							$save_to = $folder.$file;
+							
 
 							\Image::make(Input::file($input))
 								->$method($width, $height)

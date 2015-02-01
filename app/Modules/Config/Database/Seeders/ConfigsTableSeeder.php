@@ -20,6 +20,12 @@ class ConfigsTableSeeder extends Seeder {
 		]);
 
 		Config::create([
+			'label'		=> 	'Логотип',
+			'name'		=>	'logo',
+			'value'		=>	'Betty'
+		]);
+
+		Config::create([
 			'label'		=> 	'Meta-ключевые слова',
 			'name'		=>	'keyword'
 		]);

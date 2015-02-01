@@ -25,7 +25,7 @@ return [
 			'valid' => 'image',
 			'image' => [[
 				'method' => 'fit',
-				'size' => [1366, 595]
+				'size' => [670, 350]
 			]]
 		],
 		'submits' => [
