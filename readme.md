@@ -11,8 +11,8 @@ Betty (based on Laravel 4)
 ### Default access into admin
 ```
 [http://your_doman.com/admin](http://betty/admin)
-Login: **admin**
-Password: **Betty**
+Login: <b>admin</b>
+Password: <b>Betty</b>
 ```
 
 
