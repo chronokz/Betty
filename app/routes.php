@@ -11,15 +11,22 @@
 |
 */
 
-Route::get('/', function()
-{
+
+/* Pages */
+// Route::get('{alias}', function($alias)
+// {
+// 	$page = Modules\Pages\Database\Models\Page::whereAlias($alias)->first();
+// });
+
+// Route::get('/', function()
+// {
 	
 
-	$config = [];
-	foreach(Modules\Config\Database\Models\Config::all() as $item)
-	{
-		$config[$item->name] = $item->value;
-	}
+// 	$config = [];
+// 	foreach(Modules\Config\Database\Models\Config::all() as $item)
+// 	{
+// 		$config[$item->name] = $item->value;
+// 	}
 
-	return View::make('hello', compact('config'));
-});
+// 	return View::make('hello', compact('config'));
+// });
