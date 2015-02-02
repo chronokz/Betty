@@ -10,7 +10,7 @@ Betty (based on Laravel 4)
 
 ### Default access into admin
 <pre>
-[http://your_doman.com/admin](http://betty/admin)
+<a href="http://betty/admin">http://your_doman.com/admin</a>
 Login: <b>admin</b>
 Password: <b>Betty</b>
 </pre>
