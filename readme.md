@@ -9,11 +9,11 @@ Betty (based on Laravel 4)
 3) Configure database \app\config\[env]\database.php 
 
 ### Default access into admin
-```
+<pre>
 [http://your_doman.com/admin](http://betty/admin)
 Login: <b>admin</b>
 Password: <b>Betty</b>
-```
+</pre>
 
 
 ### Server Requirements
