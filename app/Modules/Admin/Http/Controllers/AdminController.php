@@ -240,6 +240,7 @@ class AdminController extends Controller {
 					if ($model->id && $model->$input)
 					{
 						array_map('unlink', glob($folder.$model->$input.'*'));
+						array_map('unlink', glob($folder.'*'.$model->$input.'*'));
 					}
 
 					// Naming new file
