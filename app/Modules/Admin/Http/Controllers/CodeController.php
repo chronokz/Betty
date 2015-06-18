@@ -91,13 +91,13 @@ class CodeController extends AdminController
         $admin_routes = file_get_contents('../app/Modules/Admin/Http/routes.php');
         $admin_routes = str_replace(
             '});
-});', "     Route::resource('code', 'CodeController');
+});', "     Route::resource('$data[alias]', '$data[controller]Controller');
 	});
 });", $admin_routes);
-        file_put_contents('../app/Modules/Admin/Config/admin_menu.php', $admin_routes);
+        file_put_contents('../app/Modules/Admin/Http/routes.php', $admin_routes);
 
 
-        \Session::flash('message.success', trans( 'admin.added', ['id' => $item->id] ));
+        \Session::flash('message.success', trans( 'admin.added'));
         return \Redirect::route('admin.'.$this->module.'.index');
     }
 
