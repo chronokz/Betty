@@ -75,8 +75,8 @@ class CodeController extends AdminController
         // Admin menu
         $admin_menu = file_get_contents('../app/Modules/Admin/Config/admin_menu.php');
         $admin_menu = str_replace(
-            '];', "
-	[
+            '];', ",
+    [
 		'url' => URL::route('admin.$data[alias].index'),
 		'icon' => 'steam',
 		'text' => '$data[title]'
@@ -86,6 +86,17 @@ class CodeController extends AdminController
 
         // Admin controller
         self::artisan('module:controller '.$data['controller'].'Controller admin');
+        $admin_controller_file = '../app/Modules/Admin/Http/Controllers/'.$data['controller'].'Controller.php';
+        $admin_controller = file_get_contents($admin_controller_file);
+        $admin_controller = str_replace(
+            'use Illuminate\Routing\Controller;',
+            'use Modules\Admin\Http\Controllers\AdminController;',
+            $admin_controller);
+        $admin_controller = str_replace('extends Controller {', 'extends AdminController {
+        public $module = \''.$data['alias'].'\';
+        ', $admin_controller);
+        file_put_contents($admin_controller_file, $admin_controller);
+
 
         // Admin routes
         $admin_routes = file_get_contents('../app/Modules/Admin/Http/routes.php');
