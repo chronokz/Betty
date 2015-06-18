@@ -42,3 +42,27 @@ $('.save-menu').click(function(e){
 		$('.save-menu').removeClass('active');
 	});
 });
+
+// Clone
+/*
+* .cloner
+*   .js_items
+*       .item(style="display:none")
+*           - any_elements -
+*           a.js_rem_item
+*   a.js_add_item
+*
+*
+* */
+$('.js_add_item').click(function(){
+    $(this).closest('.cloner').find('.item:first')
+        .clone(true)
+        .fadeIn('slow')
+        .appendTo($(this).parent().children('.js_items'));
+});
+
+$('.js_rem_item').click(function(){
+    $(this).closest('.item').fadeOut('slow', function(){
+        $(this).remove();
+    });
+});

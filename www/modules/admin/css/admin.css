@@ -62,3 +62,12 @@
 .buttons{
 	float: right;
 }
+
+.input-icon{
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.cloner .item{
+    margin-bottom: 15px;
+}

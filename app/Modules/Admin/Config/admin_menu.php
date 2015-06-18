@@ -41,5 +41,4 @@ return [
 		'icon' => 'wrench',
 		'text' => 'Настройки'
 	]
-
 ];

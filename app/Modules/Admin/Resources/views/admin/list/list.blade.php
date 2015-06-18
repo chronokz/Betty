@@ -40,7 +40,7 @@
 									@if (isset($li['type']))
 										@include('admin::admin.list_column.'.$li['type'])
 									@else
-										{{ $item->$name }}
+                                        @include('admin::admin.list_column.text')
 									@endif
 								</td>
 

@@ -108,5 +108,6 @@
 		{{ admin_js('js/custom.js') }}
 		{{ admin_js('js/admin.js') }}
 
+        @yield('scripts')
 	</body>
 </html>

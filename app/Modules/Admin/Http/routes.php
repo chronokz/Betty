@@ -11,6 +11,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Auth\\LogoutController@index']);
 		Route::get('config', ['as' => 'admin.config.index', 'uses' => 'Config\\ConfigController@index']);
 		Route::post('config', ['as' => 'admin.config.save', 'uses' => 'Config\\ConfigController@save']);
+        Route::post('menu/sort', ['as' => 'admin.menu.sort', 'uses' => 'MenuController@sort']);
 		Route::resource('pages', 'Pages\\PageController');
 		Route::resource('users', 'Users\\UserController');
 		Route::resource('feedback', 'Feedback\\FeedbackController');
@@ -18,9 +19,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('slider', 'SliderController');
 		Route::resource('products', 'ProductsController');
 		Route::resource('menu', 'MenuController');
-		Route::post('menu/sort', ['as' => 'admin.menu.sort', 'uses' => 'MenuController@sort']);
-
 		Route::resource('code', 'CodeController');
 	});
-
 });
