@@ -269,7 +269,11 @@ class AdminController extends Controller {
 						foreach ($config['form'][$input]['image'] as $image_config)
 						{
 							$method = $image_config['method'];
-							list($width, $height) = $image_config['size'];
+							
+							if (isset($image_config['size']))
+				                        {
+				                        	list($width, $height) = $image_config['size'];
+				                        }
 
 							if (isset($image_config['prefix']))
 							{
@@ -278,17 +282,23 @@ class AdminController extends Controller {
 							}
 							else
 							{
-								// Naminfileg new file without prefix
+								// Naming new file without prefix
 								$file_name = $origin_name;
 							}
 
 							$file = $file_name.'.'.$file_ext;
 							$save_to = $folder.$file;
 							
-
-							\Image::make(Input::file($input))
-								->$method($width, $height)
-								->save($save_to);
+							if ($method == 'original')
+			                        	{
+			                                	\Image::make(Input::file($input))->save($save_to);
+			                            	}
+			                            	else
+			                            	{
+								\Image::make(Input::file($input))
+									->$method($width, $height)
+									->save($save_to);
+			                            	}
 						}
 					}
 
