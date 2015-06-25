@@ -7,7 +7,9 @@
 	{{ Form::file($name, ['class' => 'form-control']) }}
 	<p class="help-block">
 		Изображение будет {{ trans('image.method.'.$input['image'][0]['method']) }}
-		под {{ join('x', $input['image'][0]['size']) }}
+		@if (isset($input['image'][0]['size']))
+		    под {{ join('x', $input['image'][0]['size']) }}
+        	@endif
 	</p>
 
 </div>
