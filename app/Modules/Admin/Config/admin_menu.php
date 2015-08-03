@@ -24,7 +24,7 @@ return [
 	[
 		'url' => URL::route('admin.products.index'),
 		'icon' => 'cubes',
-		'text' => 'Оборудование',
+		'text' => 'Продукты',
 	],
 	[
 		'url' => URL::route('admin.feedback.index'),
