@@ -286,8 +286,8 @@ class AdminController extends Controller {
 								$file_name = $origin_name;
 							}
 
-							$file = $file_name.'.'.$file_ext;
-							$save_to = $folder.$file;
+							$file_save = $file_name.'.'.$file_ext;
+							$save_to = $folder.$file_save;
 							
 							if ($method == 'original')
 			                        	{
