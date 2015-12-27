@@ -52,9 +52,8 @@ class ModuleMigrateResetCommand extends Command {
      */
     public function reset($module)
     {
-        $path = $this->laravel['modules']->getModulePath($module) . '/Database/Migrations';
-
-        $files = $this->laravel['files']->glob($path . '/*_*.php');
+        $path = $this->laravel['modules']->getPath();
+        $files = $this->laravel['files']->glob($path . '/*/Database/Migrations/*_*.php');
 
         foreach ($files as $file)
         {

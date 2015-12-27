@@ -34,7 +34,6 @@ class ModuleSeedCommand extends Command {
         $this->module = $this->laravel['modules'];
 
         $module = Str::studly($this->argument('module')) ?: $this->getModuleName();
-
         if ($module)
         {
             if ($this->module->has($module))
@@ -49,7 +48,10 @@ class ModuleSeedCommand extends Command {
 
         foreach ($this->module->all() as $name)
         {
-            $this->dbseed($name);
+            if(\File::exists('app\Modules\\'.$name.'\Database\Seeders\\'. $name . 'DatabaseSeeder.php'))
+            {
+                $this->dbseed($name);
+            }
         }
 
         return $this->info("All modules seeded.");

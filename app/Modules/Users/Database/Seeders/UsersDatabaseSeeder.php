@@ -15,6 +15,7 @@ class UsersDatabaseSeeder extends Seeder {
 		Model::unguard();
 		
 		$this->call(__NAMESPACE__ ."\\GroupsTableSeeder");
+		$this->call(__NAMESPACE__ ."\\UsersTableSeeder");
 	}
 
 }
