@@ -13,6 +13,9 @@ trait ModuleCommandTrait {
     {
         $module = $this->argument('module') ?: $this->laravel['modules']->getUsedNow();
 
+        if (!$module)
+            return false;
+
         $module = Str::studly($module);
 
         if ( ! $this->laravel['modules']->has($module))
