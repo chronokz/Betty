@@ -10,7 +10,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Дамп структуры для таблица organichouse.configs
 CREATE TABLE IF NOT EXISTS `configs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -20,7 +19,6 @@ CREATE TABLE IF NOT EXISTS `configs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.configs: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
 INSERT INTO `configs` (`id`, `name`, `value`, `label`, `type`) VALUES
 	(1, 'title', 'Once more Betty', 'Заголовок', 'text'),
@@ -32,7 +30,6 @@ INSERT INTO `configs` (`id`, `name`, `value`, `label`, `type`) VALUES
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.feedback
 CREATE TABLE IF NOT EXISTS `feedback` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -45,12 +42,10 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.feedback: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.groups
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -58,14 +53,12 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.groups: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `name`, `alias`) VALUES
 	(1, 'Администратор', 'admin');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.menu
 CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -79,18 +72,15 @@ CREATE TABLE IF NOT EXISTS `menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.menu: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.migrations: ~13 rows (приблизительно)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
 	('2014_11_15_144509_create_config_table', 1),
@@ -109,7 +99,6 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.pages
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -123,14 +112,12 @@ CREATE TABLE IF NOT EXISTS `pages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.pages: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `title`, `alias`, `content`, `public`, `meta_keywords`, `meta_description`, `created_at`, `updated_at`) VALUES
 	(1, 'Welcome page', 'intro', 'Welcome to Betty. Enjoy with it.', 1, '', '', '2015-12-27 21:52:28', '2015-12-27 21:52:28');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.products
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -143,12 +130,10 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.products: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.slider
 CREATE TABLE IF NOT EXISTS `slider` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -158,12 +143,10 @@ CREATE TABLE IF NOT EXISTS `slider` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.slider: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `slider` DISABLE KEYS */;
 /*!40000 ALTER TABLE `slider` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.social_links
 CREATE TABLE IF NOT EXISTS `social_links` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -172,12 +155,10 @@ CREATE TABLE IF NOT EXISTS `social_links` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.social_links: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `social_links` DISABLE KEYS */;
 /*!40000 ALTER TABLE `social_links` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица organichouse.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -194,7 +175,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы organichouse.users: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `group_id`, `avatar`) VALUES
 	(1, 'Administrator', 'admin', 'chrono@smtp.ru', '$2y$10$ybzNptuZkuMdGtU0nexDJO8S6xIYZty.92uW1r5YQgSw2rDdyHUa.', NULL, '2015-12-27 21:52:28', '2015-12-27 21:52:28', 0, '');
