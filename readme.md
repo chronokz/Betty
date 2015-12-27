@@ -6,7 +6,8 @@ Betty (based on Laravel 4)
 2. Use dump **or** migrations with seeds for insert datas to database
 <pre>
 <b>Dump:</b>
-<i><a href="">betty.sql</a></i>
+<i><a href="https://github.com/chronokz/Betty/blob/master/betty.sql">view betty.sql</a></i>
+<i><a href="https://raw.githubusercontent.com/chronokz/Betty/master/betty.sql">download betty.sql</a></i>
 </pre>
 <pre>
 <b>Console:</b>
