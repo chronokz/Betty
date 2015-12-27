@@ -2,9 +2,20 @@ Betty (based on Laravel 4)
 ==========================
 
 ### Instalation
-1) [Download](https://github.com/chronokz/Betty/archive/master.zip) on server and extract from the archive
-2) Use dump or migrations with seeds for insert date to database
-3) Configure database \app\config\[\env]\database.php 
+1. [Download](https://github.com/chronokz/Betty/archive/master.zip) on server and extract from the archive **or** clone it.
+2. Use dump **or** migrations with seeds for insert datas to database
+<pre>
+<b>Dump:</b>
+<i><a href="">betty.sql</a></i>
+</pre>
+<pre>
+<b>Console:</b>
+<i>php artisan module:migrate</i>
+<i>php artisan module:seed</i>
+</pre>
+3. Configure database \app\config\[\env]\database.php 
+
+
 
 ### Default access into admin
 <pre>
@@ -53,6 +64,8 @@ Naming modules must use a capital letter on the first letter. For example: Blog,
 
 ### Console commands:
 
+##### Modules
+
 Create new module.
 
 `php artisan module:make blog`
@@ -60,6 +73,8 @@ Create new module.
 Show all modules in command line.
 
 `php artisan module:list`
+
+##### Commands
   
 Create new command for the specified module.
   
@@ -68,6 +83,8 @@ Create new command for the specified module.
 `php artisan module:command CustomCommand blog --command=custom:command`
 
 `php artisan module:command CustomCommand blog --namespace=Modules\Blog\Commands`
+
+##### Migrations
   
 Create new migration for the specified module.
 
@@ -96,11 +113,7 @@ Rollback, Reset and Refresh The Migrations for the specified module.
 `php artisan module:migrate-reset blog`
 
 `php artisan module:migrate-refresh blog`
-  
-Create new seed for the specified module.
 
-`php artisan module:seed-make users blog`
-  
 Migrate from the specified module.
 
 `php artisan module:migrate blog`
@@ -108,6 +121,12 @@ Migrate from the specified module.
 Migrate from all modules.
 
 `php artisan module:migrate`
+
+##### Seeds
+  
+Create new seed for the specified module.
+
+`php artisan module:seed-make users blog`
   
 Seed from the specified module.
 
@@ -117,9 +136,13 @@ Seed from all modules.
  
 `php artisan module:seed`
 
+##### Controllers
+
 Create new controller for the specified module.
 
 `php artisan module:controller SiteController blog`
+
+##### Assets
 
 Publish assets from the specified module to public directory.
 
@@ -129,41 +152,22 @@ Publish assets from all modules to public directory.
 
 `php artisan module:publish`
 
+##### Models
+
 Create new model for the specified module.
 
 `php artisan module:model User blog`
 
 `php artisan module:model User blog --fillable="username,email,password"`
 
+##### Providers
+
 Create new service provider for the specified module.
 
 `php artisan module:provider MyServiceProvider blog`
 
-Publish migration for the specified module or for all modules.
-    This helpful when you want to rollback the migrations. You can also run `php artisan migrate` instead of `php artisan module:migrate` command for migrate the migrations.
-
-For the specified module.
-`php artisan module:publish-migration blog`
-
-For all modules.
-`php artisan module:publish-migration`
-
-Enable the specified module.
-
-`php artisan module:enable blog`
-
-Disable the specified module.
-
-`php artisan module:disable blog`
+##### Filters
 
 Generate new filter class.
 
 `php artisan module:filter-make AuthFilter`
-
-Update dependencies for the specified module.
-
-`php artisan module:update ModuleName`
-
-Update dependencies for all modules.
-
-`php artisan module:update`
