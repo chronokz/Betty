@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder {
 			'name'		=>	'Administrator',
 			'username'	=>	'admin',
 			'password'	=>	'Betty',
-			'email'		=>	'chrono@smtp.ru'
+			'email'		=>	'chrono@smtp.ru',
+			'group_id'	=>	1
 		]);
 	}
 
