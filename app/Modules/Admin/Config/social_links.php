@@ -4,6 +4,8 @@ return [
 
 	'title' => 'Социальные ссылки',
 	'model' => new Modules\Social\Database\Models\SocialLink,
+	'order' => ['position'],
+	'sortable' => true,
 
 	// For Add and Edit
 	'form' => [
@@ -18,7 +20,7 @@ return [
 		],
 		'icon' => [
 			'label' => 'Иконка',
-			'type' => 'select',
+			'type' => 'icon',
 			'options' => \Modules\Social\Database\Models\SocialLink::$icons,
 		],
 		'submits' => [

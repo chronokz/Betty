@@ -9,15 +9,47 @@ class SocialLink extends Model {
 	public $timestamps = false;
 
 	public static $icons = [
-		'skype' => 'skype',
-		'twitter' => 'twitter',
-		'facebook-square' => 'facebook-square',
-		'vk' => 'vk',
+		'behance',
+		'behance-square',
+		'twitter',
+		'facebook',
+		'facebook-official',
+		'facebook-square',
+		'flickr',
+		'foursquare',
+		'google',
+		'google-plus',
+		'google-plus-square',
+		'instagram',
+		'linkedin',
+		'linkedin-square',
+		'odnoklassniki',
+		'odnoklassniki-square',
+		'openid',
+		'pinterest',
+		'pinterest-square',
+		'reddit',
+		'reddit-alien',
+		'reddit-square',
+		'skype',
+		'tumblr',
+		'tumblr-square',
+		'twitch',
+		'twitter',
+		'twitter-square',
+		'vimeo',
+		'vimeo-square',
+		'vk',
+		'whatsapp',
+		'youtube',
+		'youtube-play',
+		'youtube-square'
 	];
 
 	protected $fillable = [
 		'title',
 		'link',
+		'position',
 		'icon'
 	];
 
