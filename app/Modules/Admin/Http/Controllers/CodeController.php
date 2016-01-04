@@ -51,10 +51,18 @@ class CodeController extends AdminController
             {
                 $migrations[] = $field['name'].':'.$field['type'];
                 $fillables[] = $field['name'];
+
+                $image = ($field['input'] == 'image') ? "'image' => [[
+            'method' => 'fit',
+            'size' => [48,48]
+        ]]":'';
+
+
                 $form_inline .= "
 		'$field[name]' => [
 			'label' => '$field[label]',
 			'type' => '$field[input]',
+            $image
 		],";
             }
         }
