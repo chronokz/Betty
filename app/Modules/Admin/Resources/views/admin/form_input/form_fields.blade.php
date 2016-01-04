@@ -25,6 +25,7 @@
                     <select name="{{ $name }}[type][]" class="form-control">
                         <option value="string">string</option>
                         <option value="integer">integer</option>
+                        <option value="text">text</option>
                         <option value="boolean">boolean</option>
                         <option value="date">date</option>
                         <option value="dateTime">dateTime</option>
