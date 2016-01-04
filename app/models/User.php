@@ -25,6 +25,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function avatar()
 	{
-		return asset('uploads/users/avatar/'.$this->attributes['avatar']);
+		if (file_exists(public_path('uploads/users/avatar/'.$this->attributes['avatar'])))
+		{
+			return asset('uploads/users/avatar/'.$this->attributes['avatar']);
+		}
+
+		return false;
 	}
 }
