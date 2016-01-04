@@ -3,7 +3,8 @@ Betty (based on Laravel 4)
 
 ### Instalation
 1. [Download](https://github.com/chronokz/Betty/archive/master.zip) on server and extract from the archive **or** clone it.
-2. Use dump **or** migrations with seeds for insert datas to database
+2. Configure database \app\config\[\env]\database.php 
+3. Use dump **or** migrations with seeds for insert datas to database
 <pre>
 <b>Dump:</b>
 <i><a target="_blank" href="https://github.com/chronokz/Betty/blob/master/betty.sql">view betty.sql</a></i>
@@ -14,7 +15,6 @@ Betty (based on Laravel 4)
 <i>php artisan module:migrate</i>
 <i>php artisan module:seed</i>
 </pre>
-3. Configure database \app\config\[\env]\database.php 
 
 
 
