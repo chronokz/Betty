@@ -9,7 +9,7 @@
                 <div class="col-sm-3">
                     <select name="{{ $name }}[input][]" class="form-control">
                     @foreach ($files as $file)
-                        @if (!in_array($file, ['.', '..', 'list_fields.blade.php', 'form_fields.blade.php']))
+                        @if (!in_array($file, ['.', '..', 'list_fields.blade.php', 'form_fields.blade.php', 'submit.blade.php']))
                             <option value="{{ substr($file, 0, -10) }}">{{ substr($file, 0, -10) }}</option>
                         @endif
                     @endforeach

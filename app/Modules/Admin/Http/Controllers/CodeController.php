@@ -45,6 +45,16 @@ class CodeController extends AdminController
             }
         }
 
+        $list_inline .= "
+        'buttons' => [
+            'type' => 'buttons',
+            'buttons' => [
+                'edit',
+                'delete',
+            ]
+        ]
+        ";
+
         foreach($fields as $field)
         {
             if ($field['name'])
@@ -53,8 +63,8 @@ class CodeController extends AdminController
                 $fillables[] = $field['name'];
 
                 $image = ($field['input'] == 'image') ? "'image' => [[
-            'method' => 'fit',
-            'size' => [48,48]
+                'method' => 'fit',
+                'size' => [48,48]
         ]]":'';
 
 
@@ -66,6 +76,12 @@ class CodeController extends AdminController
 		],";
             }
         }
+
+        $form_inline .= "
+        'submits' => [
+            'type' => 'submit'
+        ]
+        ";
 
         // Create module
         self::artisan('module:make '.$data['alias']);
