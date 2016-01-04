@@ -12,6 +12,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::get('config', ['as' => 'admin.config.index', 'uses' => 'Config\\ConfigController@index']);
 		Route::post('config', ['as' => 'admin.config.save', 'uses' => 'Config\\ConfigController@save']);
         Route::post('menu/sort', ['as' => 'admin.menu.sort', 'uses' => 'MenuController@sort']);
+        Route::post('admin/sortable/{module}', ['as' => 'admin.sortable', 'uses' => 'AdminController@sortable']);
+
+
 		Route::resource('pages', 'Pages\\PageController');
 		Route::resource('users', 'Users\\UserController');
 		Route::resource('feedback', 'Feedback\\FeedbackController');
@@ -20,5 +23,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('products', 'ProductsController');
 		Route::resource('menu', 'MenuController');
 		Route::resource('code', 'CodeController');
+	    Route::resource('about', 'AboutController');
 	});
 });

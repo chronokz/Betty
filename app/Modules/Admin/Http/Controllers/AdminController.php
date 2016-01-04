@@ -39,6 +39,7 @@ class AdminController extends Controller {
 		$data['items'] = $items->get();
 
 		$data['title'] = trans($config['title']);
+		$data['sortable'] = (isset($config['sortable']) && $config['sortable'])?1:0;
 		$data['sub_title'] = trans('admin.listing');
 		$data['list_title'] = trans('admin.list_title');
 		$data['file_url'] = self::upload_link($this->module);
@@ -182,6 +183,19 @@ class AdminController extends Controller {
 		return Redirect::back();
 	}
 
+	public function sortable($module)
+	{
+		$config = Config::get('admin::'.$module);
+		foreach(Input::get('items') as $position => $item_id)
+		{
+			$item = $config['model']->find($item_id);
+			$item->position = $position;
+			$item->save();
+		}
+
+		return \Response::json(['status' => trans('admin.saved')]);
+	}
+
 	protected function ordered_items()
 	{
 		$config = Config::get('admin::'.$this->module);
@@ -271,9 +285,9 @@ class AdminController extends Controller {
 							$method = $image_config['method'];
 							
 							if (isset($image_config['size']))
-				                        {
-				                        	list($width, $height) = $image_config['size'];
-				                        }
+							{
+								list($width, $height) = $image_config['size'];
+							}
 
 							if (isset($image_config['prefix']))
 							{
@@ -290,15 +304,27 @@ class AdminController extends Controller {
 							$save_to = $folder.$file_save;
 							
 							if ($method == 'original')
-			                        	{
-			                                	\Image::make(Input::file($input))->save($save_to);
-			                            	}
-			                            	else
-			                            	{
+							{
+								\Image::make(Input::file($input))->save($save_to);
+							}
+							elseif($method == 'widen')
+							{
+								\Image::make(Input::file($input))
+									->$method($width)
+									->save($save_to);
+							}
+							elseif($method == 'heighten')
+							{
+								\Image::make(Input::file($input))
+									->$method($height)
+									->save($save_to);
+							}
+							else
+							{
 								\Image::make(Input::file($input))
 									->$method($width, $height)
 									->save($save_to);
-			                            	}
+							}
 						}
 					}
 

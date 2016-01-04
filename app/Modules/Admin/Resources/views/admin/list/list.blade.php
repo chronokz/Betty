@@ -1,7 +1,43 @@
 @extends('admin::layouts.master')
 
-@section('content')
+@section('scripts')
+	@if ($sortable)
+	<script>
+		$(".table-responsive .table tbody").sortable({
+			placeholder: "ui-state-highlight",
+			update: function(event, ui) {
+				$('.save-menu').addClass('active');
+				$('.save-status').fadeOut('slow');
+			}
+		});
 
+		$('.save-menu').unbind('click');
+		$('.save-menu').click(function(e){
+			e.preventDefault();
+
+			var items = $(".table-responsive .table tbody").sortable('toArray', {attribute: "data-id"});
+			var url = '{{ URL::route('admin.sortable', $module) }}';
+
+			$('.save-waiting').show('slow');
+
+			$.post(url, {'items': items}, function(data){
+				$('.save-waiting').hide('slow');
+				$('.save-status').html(data.status).fadeIn('slow');
+				$('.save-menu').removeClass('active');
+			});
+
+		});
+
+	</script>
+	<style>
+	.ui-sortable-helper {
+	    display: table;
+	}
+	</style>
+	@endif
+@endsection
+
+@section('content')
 <div class="page-head">
 	@if ($create)
 		<a href="{{ $create_url }}" class="btn btn-labeled btn-primary pull-right">
@@ -34,7 +70,7 @@
 					  </thead>   
 					  <tbody>
 					  	@foreach ($items as $item)
-						<tr>
+						<tr data-id="{{ $item->id }}">
 							@foreach ($list as $name => $li)
 								<td>
 									@if (isset($li['type']))
@@ -51,6 +87,16 @@
 					  </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+
+
+            <span class="save-waiting"></span>
+            <span class="save-status"></span>
+
+            <a class="btn btn-labeled btn-success pull-right save-menu">
+            	<span class="btn-label"><i class="fa fa-save"></i></span>
+            	{{ trans('admin.save') }}
+            </a>
+
         </div>
     </div>
 </div>
