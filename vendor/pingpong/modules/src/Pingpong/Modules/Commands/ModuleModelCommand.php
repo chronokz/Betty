@@ -47,6 +47,8 @@ class ModuleModelCommand extends GeneratorCommand {
     {
         return array(
             array('fillable', null, InputOption::VALUE_OPTIONAL, 'The fillable attributes.', null),
+            array('table', null, InputOption::VALUE_OPTIONAL, 'The table attributes.', null),
+            array('timestamps', null, InputOption::VALUE_OPTIONAL, 'The timestamps attributes.', null),
         );
     }
 
@@ -58,7 +60,9 @@ class ModuleModelCommand extends GeneratorCommand {
         return new Stub('model', [
             'MODULE' => $this->getModuleName(),
             'NAME' => $this->getModelName(),
-            'FILLABLE' => $this->getFillable()
+            'FILLABLE' => $this->getFillable(),
+            'TABLE' => $this->getTableName(),
+            'TIMESTAMPS' => $this->getTimeStamps()
         ]);
     }
 
@@ -97,5 +101,20 @@ class ModuleModelCommand extends GeneratorCommand {
         }
 
         return '[]';
+    }
+
+    private function getTableName()
+    {
+        return "
+    protected \$table = '".$this->option('table')."';
+        ";
+    }
+
+    private function getTimeStamps()
+    {
+        if ($this->option('table'))
+            return "true";
+        else
+            return "false";
     }
 }
