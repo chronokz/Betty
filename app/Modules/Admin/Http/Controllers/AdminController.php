@@ -14,12 +14,6 @@ class AdminController extends Controller {
 	public $create = true;
 	public $upload = '/uploads/';
 
-	public function __construct()
-	{
-		if (\Auth::user()->group_id != 2)
-			return \App::abort(404);
-	}
-
 	public function upload_path($path = '')
 	{
 		return public_path().$this->upload.$path;

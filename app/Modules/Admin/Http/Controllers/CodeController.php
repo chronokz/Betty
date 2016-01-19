@@ -5,6 +5,12 @@ use Modules\Admin\Http\Controllers\AdminController;
 class CodeController extends AdminController
 {
 
+    public function __construct()
+    {
+        if (\Auth::user()->group_id != 2)
+            return \App::abort(404);
+    }
+
     public $module = 'code';
 
     public function index()
