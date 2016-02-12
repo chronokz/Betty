@@ -2,7 +2,7 @@
 
 namespace Intervention\Image\Imagick\Commands;
 
-use \Intervention\Image\Size;
+use Intervention\Image\Size;
 
 class FitCommand extends \Intervention\Image\Commands\AbstractCommand
 {
@@ -33,7 +33,7 @@ class FitCommand extends \Intervention\Image\Commands\AbstractCommand
         );
 
         // resize image
-        $image->getCore()->resizeImage($resized->getWidth(), $resized->getHeight(), \Imagick::FILTER_BOX, 1);
+        $image->getCore()->scaleImage($resized->getWidth(), $resized->getHeight());
         $image->getCore()->setImagePage(0,0,0,0);
 
         return true;

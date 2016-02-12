@@ -121,7 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Pingpong\Modules\ModulesServiceProvider',
+		'Betty\Modules\ModulesServiceProvider',
 		'Intervention\Image\ImageServiceProvider'
 
 	),
@@ -191,8 +191,7 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-		'Module'			=> 'Pingpong\Modules\Facades\Module',
-
+		'Module'			=> 'Betty\Modules\Facades\Module',
 	),
 
 );
