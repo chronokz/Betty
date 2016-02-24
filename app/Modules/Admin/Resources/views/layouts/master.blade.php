@@ -91,6 +91,17 @@
 		<!-- Javascript -->
 		{{ admin_js('js/plugins/jquery/jquery-1.10.2.min.js') }}
 		{{ admin_js('js/plugins/jquery-ui/jquery-ui-1.10.4.min.js') }}
+
+		<!-- File -->
+		<script>
+		    window.FileAPI = {
+		          debug: true // debug mode
+		        , staticPath: '/modules/admin/js/plugins/jquery.fileapi/FileAPI/' // path to *.swf
+		    };
+		</script>
+		{{ admin_js('js/plugins/jquery.fileapi/FileAPI/FileAPI.min.js') }}
+		{{ admin_js('js/plugins/jquery.fileapi/FileAPI/FileAPI.exif.js') }}
+		{{ admin_js('js/plugins/jquery.fileapi/jquery.fileapi.js') }}
 		
 		<!-- Bootstrap -->
 		{{ admin_js('js/plugins/bootstrap/bootstrap.min.js') }}

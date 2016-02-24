@@ -71,3 +71,15 @@
 .cloner .item{
     margin-bottom: 15px;
 }
+
+.uploaded_files{
+	margin: 5px 0;
+}
+
+.uploaded_files .item{
+	width: 300px;
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin-bottom: 1px;
+}

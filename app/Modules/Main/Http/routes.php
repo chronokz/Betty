@@ -8,4 +8,4 @@ App::missing(function() {
 });
 
 View::composer('main::inc.menu', 'Modules\Main\Composers\MenuComposer');
-View::composer('*', 'Modules\Main\Composers\ConfigComposer');
+View::composer('main::*', 'Modules\Main\Composers\ConfigComposer');

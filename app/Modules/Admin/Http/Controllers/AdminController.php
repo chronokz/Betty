@@ -82,6 +82,7 @@ class AdminController extends Controller {
 		$data['save_url'] = URL::route('admin.'.$this->module.'.store');
 		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
 		$data['method'] = 'POST';
+		$data['module'] = $this->module;
 
 		return admin_view('admin.form.form', $data);
 	}
@@ -98,6 +99,7 @@ class AdminController extends Controller {
 		$data['save_url'] = URL::route('admin.'.$this->module.'.update', $id);
 		$data['cancel_url'] = URL::route('admin.'.$this->module.'.index');
 		$data['method'] = 'PUT';
+		$data['module'] = $this->module;
 
 		return admin_view('admin.form.form', $data);
 	}
@@ -129,6 +131,7 @@ class AdminController extends Controller {
 		// Creating
 		$item = $config['model'];
 		$data = Input::get();
+		$data = self::save_array($data);
 		$data = self::save_files($item, $data);
 		$item->create($data);
 
@@ -163,6 +166,7 @@ class AdminController extends Controller {
 		// Updating
 		$item = $config['model']->find($id);
 		$data = Input::get();
+		$data = self::save_array($data);
 		$data = self::save_password($data);
 		$data = self::save_files($item, $data);
 		$item->update($data);
@@ -194,6 +198,100 @@ class AdminController extends Controller {
 		}
 
 		return \Response::json(['status' => trans('admin.saved')]);
+	}
+
+
+	public function uploads_remove($input, $module)
+	{
+		$folder = self::upload_path()
+			.$module.'/'
+			.$input.'/';
+
+		array_map('unlink', glob($folder.Input::get('file_name').'*'));
+		array_map('unlink', glob($folder.'*'.Input::get('file_name').'*'));
+	}
+
+	public function uploads_images($input, $module)
+	{
+		$config = Config::get('admin::'.$module);
+		$admin_image = [
+			'method' => 'fit',
+			'size' => [34, 34],
+			'prefix' => 'admin'
+		];
+
+		$folder = self::upload_path()
+			.$module.'/'
+			.$input.'/';
+
+		\File::makeDirectory($folder, 0777, true, true);
+
+		$file = Input::file($input);
+		if ($file->isValid())
+		{
+			array_unshift($config['form'][$input]['image'], $admin_image);
+
+			$file_name = $this->rand_name();
+			$file_ext = strtolower($file->getClientOriginalExtension());
+			
+			$origin_name = $file_name;
+
+			foreach ($config['form'][$input]['image'] as $image_config)
+			{
+
+				$method = $image_config['method'];
+
+				if (isset($image_config['size']))
+				{
+					list($width, $height) = $image_config['size'];
+				}
+
+				if (isset($image_config['prefix']))
+				{
+					// Naming new file with prefix
+					$file_name = $image_config['prefix'].'_'.$origin_name;
+				}
+				else
+				{
+					// Naming new file without prefix
+					$file_name = $origin_name;
+				}
+
+				$file_save = $file_name.'.'.$file_ext;
+				$save_to = $folder.$file_save;
+				
+				if ($method == 'original')
+				{
+					\Image::make($file)->save($save_to);
+				}
+				elseif($method == 'widen')
+				{
+					\Image::make($file)
+						->$method($width)
+						->save($save_to);
+				}
+				elseif($method == 'heighten')
+				{
+					\Image::make($file)
+						->$method($height)
+						->save($save_to);
+				}
+				else
+				{
+					\Image::make($file)
+						->$method($width, $height)
+						->save($save_to);
+				}
+			}
+		}
+
+
+		return $origin_name.'.'.$file_ext;
+	}
+
+	protected function rand_name()
+	{
+		return substr(md5(rand()),0,10);
 	}
 
 	protected function ordered_items()
@@ -230,6 +328,20 @@ class AdminController extends Controller {
 				unset($data[$name]);
 			}
 		}
+		return $data;
+	}
+
+	protected function save_array($data)
+	{
+		if (isset($data['files']))
+		{
+			foreach($data['files'] as $name => $files)
+			{
+				$data[$name] = json_encode($files);
+			}
+			unset($data['files']);
+		}
+
 		return $data;
 	}
 

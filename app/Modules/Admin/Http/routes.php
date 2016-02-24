@@ -12,7 +12,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::get('config', ['as' => 'admin.config.index', 'uses' => 'Config\\ConfigController@index']);
 		Route::post('config', ['as' => 'admin.config.save', 'uses' => 'Config\\ConfigController@save']);
         Route::post('menu/sort', ['as' => 'admin.menu.sort', 'uses' => 'MenuController@sort']);
-        Route::post('admin/sortable/{module}', ['as' => 'admin.sortable', 'uses' => 'AdminController@sortable']);
+        Route::post('uploads/{input}/{module}', ['as' => 'admin.uploads', 'uses' => 'AdminController@uploads_images']);
+        Route::post('uploads/{input}/{module}/remove', ['as' => 'admin.uploads.remove', 'uses' => 'AdminController@uploads_remove']);
+        Route::post('sortable/{module}', ['as' => 'admin.sortable', 'uses' => 'AdminController@sortable']);
 
 
 		Route::resource('pages', 'Pages\\PageController');

@@ -30,6 +30,14 @@ return [
 				'size' => [255, 147]
 			]]
 		],
+		'images' => [
+			'label' => 'Несколько изображений',
+			'type' => 'images',
+			'image' => [[
+				'method' => 'fit',
+				'size' => [255, 174]
+			]]
+		],
 		'description' => [
 			'label' => 'Описание',
 			'type' => 'textarea',

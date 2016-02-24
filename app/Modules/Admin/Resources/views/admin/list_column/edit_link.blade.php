@@ -1,0 +1,1 @@
+<a href="{{ URL::route('admin.'.$module.'.edit', $item->id) }}">{{ $item->$name }}</a>
