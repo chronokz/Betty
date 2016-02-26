@@ -9,7 +9,7 @@
 	        <div data-fileapi="progress" class="progress__bar"></div>
 	    </div>
 	    <div class="uploaded_files">
-	    	@foreach(json_decode($value) as $img)
+	    	@foreach((array)json_decode($value) as $img)
 	    		<div class="item"><a class="pull-right item_remove"><i class="fa fa-remove"></i></a><img src="{{ asset('uploads/'.$module.'/'.$name) }}/admin_{{ $img }}"><input type="hidden" name="files[{{ $name }}][]" value="{{ $img }}"></div>
 	    	@endforeach
 	    </div>
