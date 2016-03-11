@@ -131,6 +131,7 @@ class AdminController extends Controller {
 		// Creating
 		$item = $config['model'];
 		$data = Input::get();
+		$data = self::save_youtube($data);
 		$data = self::save_array($data);
 		$data = self::save_files($item, $data);
 		$item->create($data);
@@ -166,6 +167,7 @@ class AdminController extends Controller {
 		// Updating
 		$item = $config['model']->find($id);
 		$data = Input::get();
+		$data = self::save_youtube($data);
 		$data = self::save_array($data);
 		$data = self::save_password($data);
 		$data = self::save_files($item, $data);
@@ -316,6 +318,25 @@ class AdminController extends Controller {
 			}
 		}
 		return $form;
+	}
+
+	protected function save_youtube($data)
+	{
+		$config = Config::get('admin::'.$this->module);
+		foreach ($config['form'] as $name => $field)
+		{
+			if ($field['type'] == 'youtube')
+			{
+				if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', Input::get($name), $match)) {
+				    $data[$name] = $match[1];
+				}
+				else
+				{
+					$data[$name] = '';
+				}
+			}
+		}
+		return $data;
 	}
 
 	protected function save_password($data)
