@@ -10,6 +10,8 @@
 		{{ admin_css('css/bootstrap.min.css') }}
 		{{ admin_css('css/font-awesome.min.css') }}
 		{{ admin_css('css/animate/animate.min.css') }}
+		{{ admin_css('css/jquery-ui/jquery-ui.min.css') }}
+		{{ admin_css('css/jquery-ui/jquery-ui-timepicker-addon.css') }}
 		{{ admin_css('css/style.css') }}
 		{{ admin_css('css/admin.css') }}
 		
@@ -91,6 +93,7 @@
 		<!-- Javascript -->
 		{{ admin_js('js/plugins/jquery/jquery-1.10.2.min.js') }}
 		{{ admin_js('js/plugins/jquery-ui/jquery-ui-1.10.4.min.js') }}
+		{{ admin_js('js/plugins/jquery-ui/jquery-ui-timepicker-addon.js') }}
 
 		<!-- File -->
 		<script>
