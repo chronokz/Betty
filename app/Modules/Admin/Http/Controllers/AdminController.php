@@ -138,10 +138,18 @@ class AdminController extends Controller {
 		$data = self::save_youtube($data);
 		$data = self::save_array($data);
 		$data = self::save_files($item, $data);
-		$item->create($data);
+		$item = $item->create($data);
+
+		$this->after_store($item);
 
 		Session::flash('message.success', trans( 'admin.added', ['id' => $item->id] ));
-		return Redirect::route('admin.'.$this->module.'.index').'?'.$_SERVER['QUERY_STRING'];
+		parse_str($_SERVER['QUERY_STRING'], $params);
+		return Redirect::to(route('admin.'.$this->module.'.index', $params));
+	}
+
+	public function after_store($item)
+	{
+		// Any after creates
 	}
 
 	public function update($id)
@@ -175,13 +183,19 @@ class AdminController extends Controller {
 		$data = self::save_array($data);
 		$data = self::save_password($data);
 		$data = self::save_files($item, $data);
-		$item->update($data);
+		$item = $item->update($data);
+
+		$this->after_update($item);
 
 		Session::flash('message.success', trans( 'admin.edited', ['id' => $id] ));
-
 		parse_str($_SERVER['QUERY_STRING'], $params);
 		return Redirect::to(route('admin.'.$this->module.'.index', $params));
 
+	}
+
+	public function after_update($item)
+	{
+		// Any after updates
 	}
 
 	public function destroy($id)
