@@ -34,8 +34,12 @@ class AdminController extends Controller {
 		$config = Config::get('admin::'.$this->module);
 		$data['module'] = $this->module;
 		$data['list'] = $config['list'];
+		$data['config'] = $config;
 
-		$items = self::ordered_items();
+		$items = $config['model'];
+		$items = $this->filtered_items($items);
+		$items = $this->where_items($items);
+		$items = $this->ordered_items($items);
 		$data['items'] = $items->get();
 
 		$data['title'] = trans($config['title']);
@@ -137,7 +141,7 @@ class AdminController extends Controller {
 		$item->create($data);
 
 		Session::flash('message.success', trans( 'admin.added', ['id' => $item->id] ));
-		return Redirect::route('admin.'.$this->module.'.index');
+		return Redirect::route('admin.'.$this->module.'.index').'?'.$_SERVER['QUERY_STRING'];
 	}
 
 	public function update($id)
@@ -174,7 +178,9 @@ class AdminController extends Controller {
 		$item->update($data);
 
 		Session::flash('message.success', trans( 'admin.edited', ['id' => $id] ));
-		return Redirect::route('admin.'.$this->module.'.index');
+
+		parse_str($_SERVER['QUERY_STRING'], $params);
+		return Redirect::to(route('admin.'.$this->module.'.index', $params));
 
 	}
 
@@ -296,15 +302,69 @@ class AdminController extends Controller {
 		return substr(md5(rand()),0,10);
 	}
 
-	protected function ordered_items()
+	protected function filtered_items($query)
+	{
+		$config = Config::get('admin::'.$this->module);
+
+		if (isset($config['filter']))
+		{
+			foreach ($config['filter'] as $name => $options) {
+
+				switch ($options['type']) {
+					case 'text':
+						if (Input::get($name))
+							$query = $query->where($name, 'LIKE', '%'.Input::get($name).'%');
+					break;
+					case 'select':
+						if (Input::get($name) !== null && Input::get($name) !== '')
+							$query = $query->where($name, Input::get($name));
+					break;
+					case 'range':
+						if (Input::get($name.'.0') && Input::get($name.'.1'))
+						 	$query = $query->whereBetween($name, Input::get($name));
+					break;
+					default:
+						# code...
+					break;
+				}
+
+			}
+		}
+		return $query;
+	}
+
+	protected function where_items($query)
+	{
+		$config = Config::get('admin::'.$this->module);
+
+		if (isset($config['where']))
+		{
+			foreach ((array)$config['where'] as $cond) {
+				list($name, $exp, $value) = $cond;
+
+				switch ($exp) {
+					case 'in':
+						$query = $query->whereIn($name, $value);
+						break;					
+					default:
+						$query = $query->where($name, $exp, $value);
+				}
+				
+			}
+		}
+
+		return $query;
+	}
+
+	protected function ordered_items($query)
 	{
 		$config = Config::get('admin::'.$this->module);
 		if (isset($config['order']))
 		{
 			$order = (isset($config['order'][1])) ? $config['order'][1] : 'asc';
-			$config['model'] = $config['model']->orderBy($config['order'][0], $order);
+			$query = $query->orderBy($config['order'][0], $order);
 		}
-		return $config['model'];
+		return $query;
 	}
 
 	protected function load_form()

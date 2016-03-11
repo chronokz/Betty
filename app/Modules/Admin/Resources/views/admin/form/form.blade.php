@@ -14,7 +14,7 @@
                    <h3>{{ $form_title }}</h3>
                 </div>
                 <div class="box-body">
-					{{ Form::open(array('url' => $save_url, 'class' => 'form-horizontal', 'method' => $method, 'files' => true)) }}
+					{{ Form::open(array('url' => $save_url.'?'.$_SERVER['QUERY_STRING'], 'class' => 'form-horizontal', 'method' => $method, 'files' => true)) }}
 						
 						@foreach ($form as $name => $input)
 							<?php

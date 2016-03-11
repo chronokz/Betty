@@ -40,13 +40,20 @@
 @section('content')
 <div class="page-head">
 	@if ($create)
-		<a href="{{ $create_url }}" class="btn btn-labeled btn-primary pull-right">
+		<a href="{{ $create_url }}?{{ $_SERVER['QUERY_STRING'] }}" class="btn btn-labeled btn-primary pull-right">
 			<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
 			{{ trans('admin.create')}}
 		</a>
 	@endif
+	@if (isset($config['back']))
+		<a href="{{ $config['back'] }}" class="btn btn-labeled btn-success pull-left"><span class="btn-label"><i class="glyphicon glyphicon-chevron-left"></i></span>Назад</a>
+	@endif
 	<h1>{{ $title }}  <small>{{ $sub_title }}</small></h1>
 </div>
+
+@if (isset($config['filter']))
+	@include('admin::admin.filter')
+@endif
 
 <div class="content">
     <div class="row">
