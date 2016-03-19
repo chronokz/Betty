@@ -16,7 +16,9 @@ Betty (based on Laravel 4)
 <i>php artisan module:seed</i>
 </pre>
 
-
+### After Instalation
+Don't forget generate new key for laravel:
+`php artisan key:generate`
 
 ### Default access into admin
 <pre>
