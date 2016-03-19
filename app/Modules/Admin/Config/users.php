@@ -22,12 +22,13 @@ return [
 		],
 		'username' => [
 			'label' => 'Логин',
+			'valid' => 'required|alpha|min:3',
 			'type' => 'text',
 		],
 		'email' => [
 			'label' => 'E-mail',
 			'type' => 'text',
-			'valid' => 'required',
+			'valid' => 'required|email',
 		],
 		'password' => [
 			'label' => 'Пароль',
@@ -51,6 +52,7 @@ return [
 		],
 		'email' => [
 			'label' => 'E-mail',
+			'type' => 'edit_link'
 		],
 		'username' => [
 			'label' => 'Логин',

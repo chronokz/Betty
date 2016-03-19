@@ -15,6 +15,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
         Route::post('uploads/{input}/{module}', ['as' => 'admin.uploads', 'uses' => 'AdminController@uploads_images']);
         Route::post('uploads/{input}/{module}/remove', ['as' => 'admin.uploads.remove', 'uses' => 'AdminController@uploads_remove']);
         Route::post('sortable/{module}', ['as' => 'admin.sortable', 'uses' => 'AdminController@sortable']);
+        Route::get('profile', ['as' => 'admin.profile.index', 'uses' => 'ProfileController@index']);
+        Route::post('profile/{id}', ['as' => 'admin.profile.update', 'uses' => 'ProfileController@update']);
 
 
 		Route::resource('pages', 'Pages\\PageController');

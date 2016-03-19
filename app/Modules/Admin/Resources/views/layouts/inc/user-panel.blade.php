@@ -12,7 +12,7 @@
 			<a href="{{ URL::route('admin.config.index') }}"><i class="fa fa-cog"></i>Настройки сайта</a>
 		</li>
 		<li>
-			<a href="{{ URL::route('admin.users.edit', Auth::user()->id) }}"><i class="fa fa-user"></i>Профиль</a>
+			<a href="{{ URL::route('admin.profile.index') }}"><i class="fa fa-user"></i>Профиль</a>
 		</li>
 		<li class="footer">
 			<a href="{{ URL::route('admin.logout') }}"><i class="fa fa-power-off"></i>Выход</a>
