@@ -2,6 +2,11 @@
 
 return [
 	[
+		'url' => URL::route('admin.profile.index'),
+		'icon' => 'user',
+		'text' => 'Профиль'
+	],
+	[
 		'url' => URL::route('admin.menu.index'),
 		'icon' => 'windows',
 		'text' => 'Меню'
