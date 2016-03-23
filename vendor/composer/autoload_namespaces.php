@@ -27,6 +27,7 @@ return array(
     'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
+    'Ivanlemeshev\\Laravel4CyrillicSlug\\' => array($vendorDir . '/ivanlemeshev/laravel4-cyrillic-slug/src'),
     'Illuminate' => array($vendorDir . '/laravel/framework/src'),
     'Gravitano\\Helpers' => array($vendorDir . '/gravitano/helpers/src'),
     'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),

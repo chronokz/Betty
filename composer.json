@@ -8,7 +8,8 @@
 		"laravel/framework": "4.2.*",
 		"betty/modules": "master-dev",
 		"gravitano/helpers": "*",
-		"intervention/image": "~2.0"
+		"intervention/image": "~2.0",
+		"ivanlemeshev/laravel4-cyrillic-slug": "1.0.0"
 	},
 	"autoload": {
 		"classmap": [

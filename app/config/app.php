@@ -122,6 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Betty\Modules\ModulesServiceProvider',
+		'Ivanlemeshev\Laravel4CyrillicSlug\SlugServiceProvider',
 		'Intervention\Image\ImageServiceProvider'
 
 	),
@@ -192,6 +193,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Module'			=> 'Betty\Modules\Facades\Module',
+		'Slug'				=> 'Ivanlemeshev\Laravel4CyrillicSlug\Facades\Slug',
 	),
 
 );
