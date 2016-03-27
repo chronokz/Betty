@@ -45,5 +45,15 @@ return [
 		'url' => URL::route('admin.config.index'),
 		'icon' => 'wrench',
 		'text' => 'Настройки'
+	],
+    [
+		'url' => URL::route('admin.subscribers.index'),
+		'icon' => 'envelope',
+		'text' => 'Подписчики'
+	],
+    [
+		'url' => URL::route('admin.bulk.index'),
+		'icon' => 'paper-plane',
+		'text' => 'Рассылка'
 	]
 ];

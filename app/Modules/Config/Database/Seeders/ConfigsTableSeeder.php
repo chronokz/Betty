@@ -45,6 +45,18 @@ class ConfigsTableSeeder extends Seeder {
 			'name'		=>	'address',
 			'type'		=> 'textarea'
 		]);
+
+		Config::create([
+			'label'		=> 'Имя для рассылки',
+			'name'		=> 'from_name',
+			'type'		=> 'text'
+		]);
+
+		Config::create([
+			'label'		=> 'E-mail для рассылки',
+			'name'		=> 'from_email',
+			'type'		=> 'text'
+		]);
 	}
 
 }

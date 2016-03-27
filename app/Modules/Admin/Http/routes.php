@@ -18,6 +18,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
         Route::get('profile', ['as' => 'admin.profile.index', 'uses' => 'ProfileController@index']);
         Route::post('profile/{id}', ['as' => 'admin.profile.update', 'uses' => 'ProfileController@update']);
 
+        Route::get('bulk/{id}/bulk', ['as' => 'admin.bulk.bulk', 'uses' => 'BulkController@bulk']);
+        Route::post('bulk/{id}/send', ['as' => 'admin.bulk.send', 'uses' => 'BulkController@send']);
+
 
 		Route::resource('pages', 'Pages\\PageController');
 		Route::resource('users', 'Users\\UserController');
@@ -28,5 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('menu', 'MenuController');
 		Route::resource('code', 'CodeController');
 	    Route::resource('about', 'AboutController');
+	     Route::resource('subscribers', 'SubscribersController');
+	     Route::resource('bulk', 'BulkController');
 	});
 });
