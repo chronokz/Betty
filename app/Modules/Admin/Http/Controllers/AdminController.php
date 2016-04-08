@@ -298,6 +298,14 @@ class AdminController extends Controller {
 						->$method($height)
 						->save($save_to);
 				}
+				elseif($method == 'resize')
+				{
+					\Image::make($file)
+						->$method($width, $height, function($constraint){
+							$constraint->aspectRatio();
+						})
+						->save($save_to);
+				}
 				else
 				{
 					\Image::make($file)
