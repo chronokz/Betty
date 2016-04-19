@@ -29,7 +29,15 @@ function CheckAuthentication()
 	            ->push('Illuminate\Session\Middleware', $app['session'], null);
 	$stack = $client->resolve($app);
 	$stack->handle($request);
-	$isAuthorized = (!Auth::check() || (Auth::user()->group_id != 1 && Auth::user()->group_id != 2));
+	$isAuthorized = false;
+
+	if (Auth::check())
+	{
+		if (Auth::user()->group_id == 1 || Auth::user()->group_id == 2)
+		{
+			$isAuthorized = true;			
+		}
+	}
 
 	// var_dump($isAuthorized);
 	// WARNING : DO NOT simply return "true". By doing so, you are allowing
