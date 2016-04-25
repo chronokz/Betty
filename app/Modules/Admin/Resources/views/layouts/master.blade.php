@@ -105,6 +105,10 @@
 		{{ admin_js('js/plugins/jquery.fileapi/FileAPI/FileAPI.min.js') }}
 		{{ admin_js('js/plugins/jquery.fileapi/FileAPI/FileAPI.exif.js') }}
 		{{ admin_js('js/plugins/jquery.fileapi/jquery.fileapi.js') }}
+
+		<!-- Colorpicker -->
+		{{ admin_css('js/plugins/colorpicker/css/colorpicker.css') }}
+		{{ admin_js('js/plugins/colorpicker/js/colorpicker.js') }}
 		
 		<!-- Bootstrap -->
 		{{ admin_js('js/plugins/bootstrap/bootstrap.min.js') }}

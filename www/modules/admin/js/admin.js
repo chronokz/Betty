@@ -11,6 +11,20 @@ $('.wysiwyg').each(function(){
 	CKEDITOR.replace($(this).attr('id'));
 });
 
+$('.colorpicker-holder').each(function()
+{
+	var color_picker = $(this),
+		color_input = $('input[name='+$(this).attr('rel')+']');
+	color_picker.ColorPicker({
+		color: color_input.val(),
+		flat: true,
+		onChange: function(hsb, hex, rgb)
+		{
+			color_input.val('#'+hex);
+		}
+	});
+});
+
 
 $('.menu > ol').nestedSortable({
 	handle: 'div',
