@@ -19,7 +19,11 @@ class ConfigComposer
         {
             $config[$item->name] = $item->value;
         }
-
         $view->with('config', $config);
+
+        $links = SocialLink::orderBy('position')
+            ->get();
+        $view->with('social_links', $links);
+
     }
 }

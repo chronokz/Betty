@@ -21,10 +21,6 @@ class MenuComposer
             ->orderBy('position')
             ->get();
 
-        $links = SocialLink::orderBy('position')
-            ->get();
-
         $view->with('menu', $menu);
-        $view->with('social_links', $links);
     }
 }
