@@ -4,7 +4,7 @@
 	  <span class="input-group-addon"><i id="icon_selector_view" style="font-size:18px" class="fa fa-{{ $input['options'][0] }}"></i></span>
 	  <select name="{{ $name }}" class="form-control" id="icon_selector">
 	  	@foreach ($input['options'] as $icon)
-	  		<option value="{{ $icon }}">{{ $icon }}</option>
+	  		<option value="{{ $icon }}" @if($value == $icon) selected @endif>{{ $icon }}</option>
 	  	@endforeach
 	  </select>
 	</div>
