@@ -25,6 +25,6 @@ class MenuComposer
             ->get();
 
         $view->with('menu', $menu);
-        $view->with('links', $links);
+        $view->with('social_links', $links);
     }
 }
