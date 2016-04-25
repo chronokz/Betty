@@ -4,7 +4,6 @@ namespace Modules\Main\Composers;
 
 use Illuminate\View\View;
 use Modules\Menu\Database\Models\Menu;
-use Modules\Social\Database\Models\SocialLink;
 
 class MenuComposer
 {

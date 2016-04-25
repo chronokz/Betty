@@ -3,6 +3,7 @@
 namespace Modules\Main\Composers;
 
 use Illuminate\View\View;
+use Modules\Social\Database\Models\SocialLink;
 
 class ConfigComposer
 {
