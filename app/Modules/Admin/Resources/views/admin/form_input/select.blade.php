@@ -2,7 +2,7 @@
 <div class="col-sm-10">
 	<select name="{{ $name }}" class="form-control">
 		@foreach ($input['options'] as $select_id => $select_value)
-			<option value="{{ $select_id }}">{{ $select_value }}</option>
+			<option value="{{ $select_id }}" @if($select_id == $value) selected @endif>{{ $select_value }}</option>
 		@endforeach
 	</select>
 </div>
