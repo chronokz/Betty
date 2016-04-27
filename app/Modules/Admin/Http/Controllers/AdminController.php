@@ -40,7 +40,14 @@ class AdminController extends Controller {
 		$items = $this->filtered_items($items);
 		$items = $this->where_items($items);
 		$items = $this->ordered_items($items);
-		$data['items'] = $items->get();
+		if (isset($config['pager']))
+		{
+			$data['items'] = $items->paginate($config['pager']);
+		}
+		else
+		{
+			$data['items'] = $items->get();
+		}
 
 		$data['title'] = trans($config['title']);
 		$data['sortable'] = (isset($config['sortable']) && $config['sortable'])?1:0;
