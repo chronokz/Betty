@@ -93,7 +93,7 @@
 					  </tbody>
 					  </table>
                 </div><!-- /.box-body -->
-                @if ($config['pager'])
+                @if (isset($config['pager']))
                 	{{ $items->links(); }}
                 @endif
             </div><!-- /.box -->
