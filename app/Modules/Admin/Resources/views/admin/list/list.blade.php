@@ -93,6 +93,9 @@
 					  </tbody>
 					  </table>
                 </div><!-- /.box-body -->
+                @if ($config['pager'])
+                	{{ $items->links(); }}
+                @endif
             </div><!-- /.box -->
 
 
