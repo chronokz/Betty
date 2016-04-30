@@ -56,6 +56,8 @@ return array(
 
 	'locale' => 'ru',
 
+	'locales' => ['ru'],
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Fallback Locale
