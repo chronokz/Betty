@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<title>Betty - Admin Panel</title>
+		<title>{{ Config::get('app.name') }} - Admin Panel</title>
 		
 		<!-- Stylesheets -->
 		{{ admin_css('css/bootstrap.min.css') }}
@@ -25,7 +25,7 @@
 	<body class="fixed">
 		<!-- Header -->
 		<header>
-			<a href="{{ URL::route('admin.home') }}" class="logo"><i class="fa fa-bold"></i> <span>Betty</span></a>
+			<a href="{{ URL::route('admin.home') }}" class="logo"><i class="fa fa-bold"></i> <span>{{ Config::get('app.name') }}</span></a>
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="navbar-btn sidebar-toggle">
 					<span class="sr-only">Toggle navigation</span>
