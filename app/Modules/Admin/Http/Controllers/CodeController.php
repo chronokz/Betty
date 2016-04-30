@@ -61,57 +61,23 @@ class CodeController extends AdminController
 		{
 			if ($field['name'])
 			{
+				$list_inline .= self::list_input($field['name'], $field['list'], $field['label'], $field['lang']);
+				$form_inline .= self::form_input($field['name'], $field['input'], $field['label'], $field['lang']);
+
 				if ($field['lang'])
 				{
-							$list_inline .= "
-							'$field[name]' => [
-								'label' => '$field[label]',
-								'type' => '$field[input]',
-								'lang' => true,
-							],";
+					foreach($locales as $lang)
+					{
+						$migrations[] = $field['name'].'_'.$lang.':'.$field['type'];
+						$fillables[] = $field['name'].'_'.$lang;
 
-							foreach($locales as $lang)
-							{
-								$migrations[] = $field['name'].'_'.$lang.':'.$field['type'];
-								$fillables[] = $field['name'].'_'.$lang;
-
-								$image = ($field['input'] == 'image') ? "'image' => [[
-										'method' => 'fit',
-										'size' => [48,48]
-								]]":'';
-
-								$form_inline .= "
-								'$field[name]_".$lang."' => [
-									'label' => '$field[label] (".$lang.")',
-									'type' => '$field[input]',
-									$image
-								],";
-							}
+					}
 
 				}
 				else
 				{
-							$list_inline .= "
-							'$field[name]' => [
-								'label' => '$field[label]',
-								'type' => '$field[input]',
-							],";
-
-							$migrations[] = $field['name'].':'.$field['type'];
-							$fillables[] = $field['name'];
-
-							$image = ($field['input'] == 'image') ? "'image' => [[
-							'method' => 'fit',
-							'size' => [48,48]
-					]]":'';
-
-
-							$form_inline .= "
-							'$field[name]' => [
-								'label' => '$field[label]',
-								'type' => '$field[input]',
-								$image
-							],";
+					$migrations[] = $field['name'].':'.$field['type'];
+					$fillables[] = $field['name'];
 				}
 			}
 		}
@@ -226,5 +192,48 @@ return [
 	]
 ];
 ");
+	}
+
+	protected function list_input($name, $type, $label, $lang){
+		return "
+		'$name' => [
+			'label' => '$label',
+			'type' => '$type',
+			".($lang?"'lang' => true,":'')."
+		],";
+	}
+
+	protected function form_input($name, $type, $label, $lang)
+	{
+
+		if ($lang)
+		{
+			$locales = Config::get('app.locales');
+			$form_inline = '';
+			foreach ($locales as $local) {
+				$form_inline .= self::form_input_inline($name.'_'.$local, $type, $label.' ('.$local.')');
+			}
+		}
+		else
+		{
+			$form_inline = self::form_input_inline($name, $type, $label);
+		}
+
+
+		return $form_inline;
+	}
+
+	protected function form_input_inline($name, $type, $label){
+		$image = ($type == 'image') ? "'image' => [[
+				'method' => 'fit',
+				'size' => [48,48]
+		]]":'';
+
+		return "
+		'".$name."' => [
+			'label' => '$label',
+			'type' => '$type',
+			$image
+		],";
 	}
 }
