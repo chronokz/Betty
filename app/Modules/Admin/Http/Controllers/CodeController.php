@@ -2,6 +2,8 @@
 
 use Modules\Admin\Http\Controllers\AdminController;
 
+use Config;
+
 class CodeController extends AdminController
 {
 
@@ -35,7 +37,7 @@ class CodeController extends AdminController
 		$fillables = [];
 		$form_inline = '';
 		$list_inline = '';
-		$columns = self::format_data($data['list']);
+		// $columns = self::format_data($data['list']);
 		$fields = self::format_data($data['form']);
 
 
@@ -70,8 +72,8 @@ class CodeController extends AdminController
 
 							foreach($locales as $lang)
 							{
-								$migrations[] = $field['name_'.$lang].':'.$field['type'];
-								$fillables[] = $field['name_'.$lang];
+								$migrations[] = $field['name'].'_'.$lang.':'.$field['type'];
+								$fillables[] = $field['name'].'_'.$lang;
 
 								$image = ($field['input'] == 'image') ? "'image' => [[
 										'method' => 'fit',
