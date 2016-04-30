@@ -195,6 +195,9 @@ return [
 	}
 
 	protected function list_input($name, $type, $label, $lang){
+		if(!$type)
+			return;
+		
 		return "
 		'$name' => [
 			'label' => '$label',
@@ -205,6 +208,8 @@ return [
 
 	protected function form_input($name, $type, $label, $lang)
 	{
+		if(!$type)
+			return;
 
 		if ($lang)
 		{
