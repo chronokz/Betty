@@ -10,25 +10,30 @@ return [
 	// For Add and Edit
 	'form' => [
 		'title' => [
-			'label' => 'Имя (прим. Блог)',
+			'label' => 'Имя (прим. Пользователи)',
 			'type' => 'text',
 			'valid' => 'required',
 		],
 		'alias' => [
-			'label' => 'Алиас (прим. blog)',
+			'label' => 'Алиас (прим. users)',
 			'type' => 'text',
             'valid' => 'required',
+		],
+		'icon' => [
+			'label' => 'Иконка',
+			'type' => 'icon',
+			'options' => \Modules\Admin\Database\Models\Icon::$fa,
 		],
 //        'timestamps' => [
 //            'label' => 'Дата создания и дата редактирования (timestamps)',
 //            'type' => 'yes_no',
 //        ],
-		'list' => [
-			'label' => 'Поля для списка',
-			'type' => 'list_fields',
-		],
+		// 'list' => [
+		// 	'label' => 'Поля для списка',
+		// 	'type' => 'list_fields',
+		// ],
 		'form' => [
-			'label' => 'Поля для формы',
+			'label' => 'Поля',
 			'type' => 'form_fields',
 		],
 		'submits' => [
