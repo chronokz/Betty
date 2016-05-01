@@ -37,25 +37,10 @@ class CodeController extends AdminController
 		$fillables = [];
 		$form_inline = '';
 		$list_inline = '';
-		// $columns = self::format_data($data['list']);
 		$fields = self::format_data($data['form']);
-
-
-		// foreach($columns as $field)
-		// {
-		// 	if ($field['name'])
-		// 	{
-		// 		$list_inline .= "
-		// '$field[name]' => [
-		// 	'label' => '$field[label]',
-		// 	'type' => '$field[input]',
-		// ],";
-		// 	}
-		// }
 
 		$locale = Config::get('app.locale');
 		$locales = Config::get('app.locales');
-
 
 		foreach($fields as $field)
 		{
@@ -113,8 +98,8 @@ class CodeController extends AdminController
 
 		// Admin menu
 		$admin_menu = file_get_contents('../app/Modules/Admin/Config/admin_menu.php');
-		$admin_menu = str_replace(
-			'];', ",[
+		$admin_menu = str_replace("\n];", ",
+	[
 		'url' => URL::route('admin.$data[alias].index'),
 		'icon' => '$data[icon]',
 		'text' => '$data[title]'
@@ -135,12 +120,10 @@ class CodeController extends AdminController
 		', $admin_controller);
 		file_put_contents($admin_controller_file, $admin_controller);
 
-
 		// Admin routes
 		$admin_routes = file_get_contents('../app/Modules/Admin/Http/routes.php');
 		$admin_routes = str_replace("});\n});", "	Route::resource('$data[alias]', '$data[controller]Controller');\n	});\n});", $admin_routes);
 		file_put_contents('../app/Modules/Admin/Http/routes.php', $admin_routes);
-
 
 		\Session::flash('message.success', trans( 'admin.added'));
 		return \Redirect::route('admin.'.$this->module.'.index');
