@@ -114,8 +114,7 @@ class CodeController extends AdminController
 		// Admin menu
 		$admin_menu = file_get_contents('../app/Modules/Admin/Config/admin_menu.php');
 		$admin_menu = str_replace(
-			'];', ",
-	[
+			'];', ",[
 		'url' => URL::route('admin.$data[alias].index'),
 		'icon' => '$data[icon]',
 		'text' => '$data[title]'
