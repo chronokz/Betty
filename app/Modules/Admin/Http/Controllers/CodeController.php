@@ -138,11 +138,7 @@ class CodeController extends AdminController
 
 		// Admin routes
 		$admin_routes = file_get_contents('../app/Modules/Admin/Http/routes.php');
-		$admin_routes = str_replace(
-			'});
-});', "     Route::resource('$data[alias]', '$data[controller]Controller');
-	});
-});", $admin_routes);
+		$admin_routes = str_replace("});\n});", "	Route::resource('$data[alias]', '$data[controller]Controller');\n	});\n});", $admin_routes);
 		file_put_contents('../app/Modules/Admin/Http/routes.php', $admin_routes);
 
 
