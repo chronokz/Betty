@@ -6,16 +6,21 @@
 <ul class="sidebar-menu">
 
 	@foreach ($menu as $item)
-		<li{{ ($url == $item['url']?' class="active"':'') }}>
-			<a href="{{ $item['url'] }}">
-				<i class="fa fa-{{ $item['icon'] }}"></i>
-				<span>{{ $item['text'] }}</span>
-			</a>
-		</li>
+		@if (is_string($item) && $item == '-') 
+			<li role="separator" class="divider"></li>
+		@else
+			<li{{ ($url == $item['url']?' class="active"':'') }}>
+				<a href="{{ $item['url'] }}">
+					<i class="fa fa-{{ $item['icon'] }}"></i>
+					<span>{{ $item['text'] }}</span>
+				</a>
+			</li>
+		@endif
 	@endforeach
 
 	@if (Auth::user()->group_id == 2)
-		<li style="border-top: 1px solid #191919">
+		<li role="separator" class="divider"></li>
+		<li>
 			<a href="{{ URL::route('admin.code.index') }}">
 				<i class="fa fa-code"></i>
 				<span>Разработка</span>
