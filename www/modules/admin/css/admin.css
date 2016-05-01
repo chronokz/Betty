@@ -87,3 +87,9 @@
 .code_input_item:nth-child(3) .js_up_item{
 	visibility: hidden;
 }
+
+.sidebar-menu li.divider{
+	height: 1px;
+	overflow: hidden;
+	background-color: #191919;
+}
