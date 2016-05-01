@@ -80,3 +80,10 @@ $('.js_rem_item').click(function(){
         $(this).remove();
     });
 });
+
+$('.js_up_item').click(function(){
+	var item = $(this).closest('.item'),
+		item_after = item.prev('.item');
+
+		item_after.before(item);
+});

@@ -11,7 +11,7 @@
                 <div class="col-sm-2">Лейбл для поля</div>
                 <div class="col-sm-2">Тип в базе</div>
             </div>
-            <div class="row item" style="display:none">
+            <div class="row item code_input_item" style="display:none">
                 <div class="col-sm-1">
                     <select name="{{ $name }}[lang][]" class="form-control">
                         <option value="0">Нет</option>
@@ -61,6 +61,7 @@
                     </select>
                 </div>
                 <div class="col-sm-1">
+                    <a class="js_up_item"><i class="fa fa-arrow-up input-icon"></i></a>
                     <a class="js_rem_item"><i class="fa fa-times input-icon"></i></a>
                 </div>
             </div>
