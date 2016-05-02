@@ -30,8 +30,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 		Route::resource('products', 'ProductsController');
 		Route::resource('menu', 'MenuController');
 		Route::resource('code', 'CodeController');
-	    Route::resource('about', 'AboutController');
-	     Route::resource('subscribers', 'SubscribersController');
-	     Route::resource('bulk', 'BulkController');
+		Route::resource('about', 'AboutController');
+		Route::resource('subscribers', 'SubscribersController');
+		Route::resource('bulk', 'BulkController');
 	});
 });
