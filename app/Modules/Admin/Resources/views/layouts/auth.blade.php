@@ -27,7 +27,7 @@
 			@yield('content')
 			
 			<footer>
-				Developed by chrono &copy; {{ date('Y') }}.
+				Developed by <a href="http://chrono.kz" target="_blank">chrono</a> &copy; {{ date('Y') }}.
 			</footer>
 		</div>
 		
