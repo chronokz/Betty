@@ -1,6 +1,9 @@
+<?php
+	$avatar = Auth::user()->avatar();
+?>
 <div class="user-box">
 	<div class="avatar">
-		@if ($avatar = Auth::user()->avatar())
+		@if ($avatar && @fopen($avatar, 'r'))
 			{{ HTML::Image($avatar) }}
 		@else
 			{{ admin_img('img/avatar.jpg') }}

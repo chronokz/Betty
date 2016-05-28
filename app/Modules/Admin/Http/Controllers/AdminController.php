@@ -118,6 +118,8 @@ class AdminController extends Controller {
 	public function store()
 	{
 		$config = Config::get('admin::'.$this->module);
+		$data = Input::get();
+		$data = self::save_alias($data);
 
 		// Validating
 		$rules = [];
@@ -129,7 +131,7 @@ class AdminController extends Controller {
 				$attrs[$field] = $option['label'];
 			}
 		}
-		$validator = Validator::make(Input::get(), $rules);
+		$validator = Validator::make($data, $rules);
 		$validator->setAttributeNames($attrs);
 
 		if ($validator->fails())
@@ -162,6 +164,8 @@ class AdminController extends Controller {
 	public function update($id)
 	{
 		$config = Config::get('admin::'.$this->module);
+		$data = Input::get();
+		$data = self::save_alias($data);
 
 		// Validating
 		$rules = [];
@@ -173,7 +177,7 @@ class AdminController extends Controller {
 				$attrs[$field] = $option['label'];
 			}
 		}
-		$validator = Validator::make(Input::get(), $rules);
+		$validator = Validator::make($data, $rules);
 		$validator->setAttributeNames($attrs);
 
 		if ($validator->fails())
@@ -454,6 +458,47 @@ class AdminController extends Controller {
 
 		return $data;
 	}
+	
+	protected function save_alias($data)
+	{
+		$config = Config::get('admin::'.$this->module);
+		foreach ($config['form'] as $name => $field)
+		{
+			if ($field['type'] == 'alias')
+			{
+				if (trim($data[$name]))
+				{
+					$data[$name] = Slug::make($data[$name]);
+				}
+				else
+				{
+					$data[$name] = Slug::make($data[$field['for']]);
+				}
+
+				$exist = $config['model']->where($name, '=', $data[$name])->where('id', '!=', \Route::input($this->module))->count();
+				if ($exist)
+				{
+					$parts = explode('-', $data[$name]);
+					$last_param = array_pop($parts);
+
+					if(is_numeric($last_param))
+					{
+						   $parts[] = $last_param+1;
+					}
+					else
+					{
+						$parts[] = $last_param.'-1';
+					}
+
+					$data[$name] = join('-', $parts); // regenerate alias
+
+					return self::save_alias($data);
+				}
+
+			}
+		}
+		return $data;
+	}
 
 	protected function save_files($model, $data)
 	{
@@ -539,6 +584,14 @@ class AdminController extends Controller {
 							{
 								\Image::make(Input::file($input))
 									->$method($height)
+									->save($save_to);
+							}
+							elseif($method == 'resize')
+							{
+								\Image::make(Input::file($input))
+									->$method($width, $height, function($constraint){
+										$constraint->aspectRatio();
+									})
 									->save($save_to);
 							}
 							else
