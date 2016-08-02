@@ -27,12 +27,12 @@ class ConfigsTableSeeder extends Seeder {
 
 		Config::create([
 			'label'		=> 	'Meta-ключевые слова',
-			'name'		=>	'keyword'
+			'name'		=>	'meta_keywords'
 		]);
 
 		Config::create([
 			'label'		=> 	'Meta-описание',
-			'name'		=>	'description'
+			'name'		=>	'meta_description'
 		]);
 
 		Config::create([
