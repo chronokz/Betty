@@ -22,7 +22,7 @@
                     <select name="{{ $name }}[list][]" class="form-control">
                         <option value="">- Не показывать -</option>
                         <?php
-                            $files = scandir('../app/Modules/Admin/Resources/views/admin/list_column/');
+                            $files = scandir(base_path('app/Modules/Admin/Resources/views/admin/list_column'));
                         ?>
                         @foreach ($files as $file)
                             @if (!in_array($file, ['.', '..', 'buttons.blade.php']))
