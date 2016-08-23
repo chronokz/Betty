@@ -1,7 +1,7 @@
 <label for="input-text" class="col-sm-2 control-label">{{ $input['label'] }}</label>
 <div class="col-sm-10">
     <?php
-    $files = scandir('../app/Modules/Admin/Resources/views/admin/list_column/');
+    $files = scandir(base_path('app/Modules/Admin/Resources/views/admin/list_column'));
     ?>
     <div class="well cloner">
         <div class="items js_items">
