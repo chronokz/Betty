@@ -43,7 +43,9 @@
 	    $('#uploader_{{ $name }} .uploaded_files').on('click', '.item_remove', function(){
 	    	var item = $(this).closest('.item');
 	    	var file_name = item.children('input').val();
-	    	item.fadeOut('slow');
+	    	item.fadeOut('slow', function(){
+	    		item.remove();
+	    	});
 	    	$.post('{{ route('admin.uploads.remove', [$name, $module]) }}', {'file_name': file_name});
 	    });
 	</script>
