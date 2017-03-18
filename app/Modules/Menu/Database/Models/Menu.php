@@ -18,7 +18,7 @@ class Menu extends Model {
 	public static function hierarchy($parent_id = 0, $only_public = false)
 	{
 
-		$items = self::whereParent_id($parent_id)
+		$items = self::whereParent_id($parent_id);
 		if ($only_public)
 			$items = $items->wherePublic(1);
 
