@@ -15,13 +15,18 @@ class Menu extends Model {
 		return $this->whereParentId($this->id)->orderBy('position')->get();
 	}
 
-	public static function hierarchy($parent_id = 0)
+	public static function hierarchy($parent_id = 0, $only_public = false)
 	{
-		$items = self::whereParent_id($parent_id)->orderBy('position')->get();
+
+		$items = self::whereParent_id($parent_id)
+		if ($only_public)
+			$items = $items->wherePublic(1);
+
+		$items = $items->orderBy('position')->get();
 
 		foreach($items as $item)
 		{
-			$item->items = self::hierarchy($item->id);
+			$item->items = self::hierarchy($item->id, $only_public);
 		}
 
 		return $items;
