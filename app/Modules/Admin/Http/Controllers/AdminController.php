@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
+use Route;
+use Slug;
+
 class AdminController extends Controller {
 
 	public $module = 'home';
@@ -143,7 +146,6 @@ class AdminController extends Controller {
 
 		// Creating
 		$item = $config['model'];
-		$data = Input::get();
 		$data = self::save_youtube($data);
 		$data = self::save_array($data);
 		$data = self::save_files($item, $data);
@@ -189,7 +191,6 @@ class AdminController extends Controller {
 
 		// Updating
 		$item = $config['model']->find($id);
-		$data = Input::get();
 		$data = self::save_youtube($data);
 		$data = self::save_array($data);
 		$data = self::save_password($data);
@@ -475,7 +476,11 @@ class AdminController extends Controller {
 					$data[$name] = Slug::make($data[$field['for']]);
 				}
 
-				$exist = $config['model']->where($name, '=', $data[$name])->where('id', '!=', \Route::input($this->module))->count();
+				if (Route::input($this->module))
+					$exist = $config['model']->where($name, '=', $data[$name])->where('id', '!=', Route::input($this->module))->count();
+				else
+					$exist = 0;
+
 				if ($exist)
 				{
 					$parts = explode('-', $data[$name]);
