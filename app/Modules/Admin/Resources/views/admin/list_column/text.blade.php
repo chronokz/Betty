@@ -1,1 +1,1 @@
-{{ $item->$name }}
+{{ str_limit($item->$name) }}
