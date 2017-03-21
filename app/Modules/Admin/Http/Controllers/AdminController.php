@@ -19,7 +19,7 @@ class AdminController extends Controller {
 
 	public function upload_path($path = '')
 	{
-		return public_path().$this->upload.$path;
+		return $_SERVER['DOCUMENT_ROOT'].$this->upload.$path;
 	}
 
 	public function upload_link($path = '')
