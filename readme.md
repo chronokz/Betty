@@ -3,7 +3,8 @@ Betty (based on Laravel 4)
 
 ### Instalation
 1. [Download](https://github.com/chronokz/Betty/archive/master.zip) on server and extract from the archive **or** clone it.
-2. Configure database \app\config\[\env]\database.php 
+2. Configure database \app\config\[\env]\database.php
+2.1. If you work with local version than create .env.local.php with content `<?php  return[];`
 3. Use dump **or** migrations with seeds for insert datas to database
 <pre>
 <b>Dump:</b>
