@@ -8,7 +8,7 @@
 		"grunt-contrib-uglify": "*",
 
 		"eventemitter2": "~0.4.9",
-		"semver": "~1.0.14",
+		"semver": "4.3.2",
 		"temporary": "~0.0.4",
 		"phantomjs": "latest"
 	},
